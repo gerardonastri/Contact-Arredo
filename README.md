@@ -26,6 +26,9 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 - **Tailwind CSS**
 - **Shadcn/ui**
 - **Framer-motion**
+- **Zod**
+
+## Features
 
 ## Deploy on Vercel
 
