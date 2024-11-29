@@ -1,38 +1,89 @@
+"use client";
+
+import * as React from "react";
 import Link from "next/link";
-import React from "react";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Menu } from "lucide-react";
 
-const Navbar = () => {
+const navigation = [
+  { name: "Product", href: "/product" },
+  { name: "Lifestyle", href: "/lifestyle" },
+  { name: "News", href: "/news" },
+  { name: "Projects", href: "/projects" },
+];
+
+export default function Navbar() {
+  const [isScrolled, setIsScrolled] = React.useState(false);
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <nav className="max-w-[1700px] mx-auto px-[3.5rem] py-6">
-      <div className="w-full flex items-center justify-between">
-        <Link href="/">
-          <h1 className="text-3xl font-bold">Contact Arredo</h1>
-        </Link>
-        <ul className="flex items-center gap-8">
-          <li className="pb-2 hover:shadow-[inset_0_-2px_0_0_rgba(0,0,0,1)] transition-all ease-in duration-200">
-            <Link href="/" className="">
-              Product
-            </Link>
-          </li>
-          <li className="pb-2 hover:shadow-[inset_0_-2px_0_0_rgba(0,0,0,1)] transition-all ease-in duration-200">
-            <Link href="/" className="">
-              Lifestyle
-            </Link>
-          </li>
-          <li className="pb-2 hover:shadow-[inset_0_-2px_0_0_rgba(0,0,0,1)] transition-all ease-in duration-200">
-            <Link href="/" className="">
-              News
-            </Link>
-          </li>
-          <li className="pb-2 hover:shadow-[inset_0_-2px_0_0_rgba(0,0,0,1)] transition-all ease-in duration-200">
-            <Link href="/" className="">
-              Projects
-            </Link>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  );
-};
+    <header
+      className={cn(
+        "fixed top-0 w-full z-50 transition-all duration-300",
+        isScrolled ? "bg-white/80 backdrop-blur-md shadow-sm" : "bg-transparent"
+      )}
+    >
+      <nav className="mx-auto max-w-[1700px] px-4 lg:px-[3rem] sm:px-6 pt-4">
+        <div className="flex h-16 items-center justify-between">
+          {/* Logo */}
+          <Link href="/" className="text-3xl font-semibold">
+            Contact Arredo
+          </Link>
 
-export default Navbar;
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex md:items-center md:space-x-8">
+            {navigation.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className="text-sm font-medium text-gray-900 hover:text-gray-600 transition-colors"
+              >
+                {item.name}
+              </Link>
+            ))}
+          </div>
+
+          {/* Mobile Navigation */}
+          <div className="md:hidden">
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon">
+                  <Menu className="h-6 w-6" />
+                  <span className="sr-only">Open menu</span>
+                </Button>
+              </SheetTrigger>
+              <SheetContent
+                title="sidebar links"
+                side="right"
+                className="w-[240px] sm:w-[300px]"
+              >
+                <div className="mt-6 flow-root">
+                  <div className="space-y-4">
+                    {navigation.map((item) => (
+                      <Link
+                        key={item.name}
+                        href={item.href}
+                        className="block px-3 py-2 text-base text-black hover:bg-gray-50 rounded-md hover:border-b border-black"
+                      >
+                        {item.name}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </SheetContent>
+            </Sheet>
+          </div>
+        </div>
+      </nav>
+    </header>
+  );
+}
