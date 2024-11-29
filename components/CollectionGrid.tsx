@@ -2,7 +2,6 @@
 import React from "react";
 import Masonry from "react-masonry-css";
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 // import { Masonry } from "react-plock";
 
