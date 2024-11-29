@@ -3,7 +3,7 @@ import React from "react";
 
 const Navbar = () => {
   return (
-    <nav className="w-full px-[3.5rem] py-6">
+    <nav className="max-w-[1700px] mx-auto px-[3.5rem] py-6">
       <div className="w-full flex items-center justify-between">
         <Link href="/">
           <h1 className="text-3xl font-bold">Poliform</h1>

@@ -11,3 +11,18 @@ body {
     --radius: 0.5rem;
   }
 }
+.my-masonry-grid {
+  display: flex;
+  margin-left: -30px; /* Spaziatura */
+  width: auto;
+}
+.my-masonry-grid_column {
+  padding-left: 30px; /* Spaziatura */
+  background-clip: padding-box;
+}
+
+/* @media screen and (max-width: 600px){
+  .my-masonry-grid{
+    flex-direction: column;
+  }
+} */

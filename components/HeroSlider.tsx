@@ -51,7 +51,7 @@ export default function HeroSlider({
   };
 
   return (
-    <div className="w-full h-[80vh] lg:px-[3rem] lg:rounded-[25px] relative">
+    <div className="max-w-[1700px] mx-auto h-[80vh] lg:px-[3rem] lg:rounded-[25px] relative">
       <div className="relative w-full overflow-hidden h-[80vh] lg:rounded-[25px]">
         <AnimatePresence initial={false} custom={direction}>
           <motion.div

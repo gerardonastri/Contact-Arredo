@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
+const myFont = localFont({ src: "./font.otf" });
 
-const poppins = Poppins({
-  style: "normal",
-  variable: "--font-poppins",
-  subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-});
+// const poppins = Poppins({
+//   style: "normal",
+//   variable: "--font-poppins",
+//   subsets: ["latin"],
+//   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+// });
 
 export const metadata: Metadata = {
   title: "Contact Arredo",
@@ -42,7 +43,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${poppins.variable} font-poppins antialiased`}>
+      <body className={`${myFont.className} font-poppins antialiased`}>
         {children}
       </body>
     </html>
