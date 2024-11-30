@@ -25,7 +25,7 @@ export default function Carousel() {
     setLoopImages([...images, ...images]); // Duplicate images for seamless loop
   }, []);
 
-  useAnimationFrame((t) => {
+  useAnimationFrame(() => {
     const wrappedScroll = wrap(0, -carouselWidth / 2, scrollX);
     setScrollX(wrappedScroll - 0.5); // Adjust speed here
   });
