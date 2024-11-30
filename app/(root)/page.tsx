@@ -30,7 +30,7 @@ const slides: Slide[] = [
 
 const page = () => {
   return (
-    <div className="pt-[100px]">
+    <div className="">
       <HeroSlider slides={slides} />
       <FurnitureGallery />
       <AnimatedStats />

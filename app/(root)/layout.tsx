@@ -8,7 +8,7 @@ const layout = ({
   children: React.ReactNode;
 }>) => {
   return (
-    <div>
+    <div className="pt-[100px]">
       <Navbar />
       {children}
       <Footer />

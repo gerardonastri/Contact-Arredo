@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer className="mt-[100px] bg-black text-white px-6 py-12 md:py-16 lg:py-20">
+    <footer className="mt-[100px] bg-black text-white z-1 relative px-6 py-12 md:py-16 lg:py-20">
       <div className="max-w-[1700px] md:px-[2rem] mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
           <div className="space-y-4">
