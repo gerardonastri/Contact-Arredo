@@ -1,8 +1,17 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-const myFont = localFont({ src: "./font.otf" });
 
+// Importazione dei font locali
+const myFont = localFont({
+  src: "./fonts/font.otf",
+  variable: "--font-myfont",
+});
+
+const gilmerRegular = localFont({
+  src: "./fonts/Gilmer-Regular.otf",
+  variable: "--font-gilmer",
+});
 // const poppins = Poppins({
 //   style: "normal",
 //   variable: "--font-poppins",
@@ -43,7 +52,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${myFont.className} font-poppins antialiased`}>
+      <body
+        className={`${myFont.variable} ${gilmerRegular.variable} font-poppins antialiased`}
+      >
         {children}
       </body>
     </html>

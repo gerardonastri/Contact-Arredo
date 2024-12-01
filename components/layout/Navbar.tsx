@@ -9,7 +9,7 @@ import { Menu } from "lucide-react";
 
 const navigation = [
   { name: "Product", href: "/product" },
-  { name: "Lifestyle", href: "/lifestyle" },
+  { name: "Lifestyle", href: "/about" },
   { name: "News", href: "/news" },
   { name: "Projects", href: "/projects" },
 ];
@@ -35,7 +35,7 @@ export default function Navbar() {
       <nav className="mx-auto max-w-[1700px] px-4 lg:px-[3rem] sm:px-6 pt-4">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="text-3xl font-semibold">
+          <Link href="/" className="text-3xl font-glimerBold">
             Contact Arredo
           </Link>
 
@@ -45,7 +45,7 @@ export default function Navbar() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-sm font-medium text-gray-900 hover:text-gray-600 transition-colors"
+                className="text-sm font-glimerBold font-medium text-gray-900 hover:text-gray-600 transition-colors"
               >
                 {item.name}
               </Link>
@@ -72,7 +72,7 @@ export default function Navbar() {
                       <Link
                         key={item.name}
                         href={item.href}
-                        className="block px-3 py-2 text-base text-black hover:bg-gray-50 rounded-md hover:border-b border-black"
+                        className="block font-glimerBold px-3 py-2 text-base text-black hover:bg-gray-50 rounded-md hover:border-b border-black"
                       >
                         {item.name}
                       </Link>

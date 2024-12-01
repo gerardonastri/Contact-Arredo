@@ -35,7 +35,7 @@ const page = () => {
       <FurnitureGallery />
       <AnimatedStats />
       <div className="flex flex-col md:flex-row gap-5 md:gap-0 justify-between w-full px-[3rem] lg:max-w-[1700px] mx-auto mt-[120px]">
-        <h2 className="font-bold text-3xl md:text-5xl">
+        <h2 className="font-glimerBold text-3xl md:text-5xl">
           Explore Our Proudly <br />
           Collection
         </h2>

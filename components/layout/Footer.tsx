@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="max-w-[1700px] md:px-[2rem] mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
           <div className="space-y-4">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-light leading-tight">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-glimerBold leading-tight">
               Engage with Us in
               <br />
               Conversation.
@@ -30,7 +30,7 @@ export default function Footer() {
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 lg:gap-12 border-t border-gray-800 pt-8">
           <div className="space-y-4">
-            <h3 className="text-lg font-medium">About</h3>
+            <h3 className="text-lg font-glimerBold">About</h3>
             <ul className="space-y-3 text-gray-400">
               <li>
                 <a href="#" className="hover:text-white transition-colors">
@@ -61,7 +61,7 @@ export default function Footer() {
           </div>
 
           <div className="space-y-4">
-            <h3 className="text-lg font-medium">Customer Service</h3>
+            <h3 className="text-lg font-glimerBold">Customer Service</h3>
             <ul className="space-y-3 text-gray-400">
               <li>
                 <a href="#" className="hover:text-white transition-colors">
@@ -92,7 +92,7 @@ export default function Footer() {
           </div>
 
           <div className="space-y-4">
-            <h3 className="text-lg font-medium">Social Media</h3>
+            <h3 className="text-lg font-glimerBold">Social Media</h3>
             <ul className="space-y-3 text-gray-400">
               <li>
                 <a href="#" className="hover:text-white transition-colors">
@@ -115,7 +115,7 @@ export default function Footer() {
           <div className="md:text-right">
             <a href="#" className="inline-block">
               <span className="sr-only">Contact Arredo</span>
-              <h2 className="text-4xl font-bold">Contact Arredo</h2>
+              <h2 className="text-4xl font-glimerBold">Contact Arredo</h2>
             </a>
           </div>
         </div>

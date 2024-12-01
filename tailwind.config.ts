@@ -19,6 +19,10 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      fontFamily: {
+        glimerBold: ["var(--font-myfont)", "sans-serif"],
+        gilmer: ["var(--font-gilmer)", "sans-serif"],
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],

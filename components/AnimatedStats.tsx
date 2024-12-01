@@ -60,7 +60,7 @@ export default function AnimatedStats() {
             transition={{ duration: 0.6, delay: index * 0.2 }}
             className="text-center"
           >
-            <div className="text-4xl md:text-5xl lg:text-6xl font-bold mb-2">
+            <div className="text-4xl md:text-5xl lg:text-6xl font-glimerBold mb-2">
               {typeof stat.value === "number" ? (
                 <>
                   <Counter value={stat.value} />

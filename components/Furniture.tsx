@@ -52,7 +52,7 @@ export default function FurnitureGallery() {
                 </span>
               </div>
               <div className="absolute bottom-6 left-6 right-6">
-                <h1 className="text-4xl font-bold text-white mb-2">
+                <h1 className="text-4xl font-glimerBold text-white mb-2">
                   {galleryItems[0].title}
                 </h1>
               </div>
@@ -78,7 +78,7 @@ export default function FurnitureGallery() {
                   </span>
                 </div>
                 <div className="absolute bottom-4 left-4 right-4">
-                  <h2 className="text-xl font-bold text-white mb-1">
+                  <h2 className="text-xl font-glimerBold text-white mb-1">
                     {item.title}
                   </h2>
                   <p className="text-white/90 text-sm">{item.description}</p>
