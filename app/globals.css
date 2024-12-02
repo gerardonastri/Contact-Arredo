@@ -5,6 +5,9 @@
 body {
   /* font-family: "Poppins", sans-serif; */
   font-family: var(--font-gilmer), sans-serif;
+  transition-property: opacity, background, transform, filter;
+  transition-timing-function: ease-in-out;
+  transition-duration: 300ms;
 }
 
 @layer base {
@@ -20,6 +23,12 @@ body {
 .my-masonry-grid_column {
   padding-left: 30px; /* Spaziatura */
   background-clip: padding-box;
+}
+.page-transition {
+  opacity: 0;
+  background-color: black;
+  transform: translateY(40px);
+  filter: blur(12px);
 }
 
 /* @media screen and (max-width: 600px){

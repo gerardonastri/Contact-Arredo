@@ -6,10 +6,11 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
+import TransitionLink from "../TransitionLink";
 
 const navigation = [
   { name: "Product", href: "/product" },
-  { name: "Lifestyle", href: "/about" },
+  { name: "About", href: "/about" },
   { name: "News", href: "/news" },
   { name: "Projects", href: "/projects" },
 ];
@@ -42,13 +43,13 @@ export default function Navbar() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex md:items-center md:space-x-8">
             {navigation.map((item) => (
-              <Link
+              <TransitionLink
                 key={item.name}
                 href={item.href}
                 className="text-sm font-glimerBold font-medium text-gray-900 hover:text-gray-600 transition-colors"
               >
                 {item.name}
-              </Link>
+              </TransitionLink>
             ))}
           </div>
 
@@ -69,13 +70,13 @@ export default function Navbar() {
                 <div className="mt-6 flow-root">
                   <div className="space-y-4">
                     {navigation.map((item) => (
-                      <Link
+                      <TransitionLink
                         key={item.name}
                         href={item.href}
                         className="block font-glimerBold px-3 py-2 text-base text-black hover:bg-gray-50 rounded-md hover:border-b border-black"
                       >
                         {item.name}
-                      </Link>
+                      </TransitionLink>
                     ))}
                   </div>
                 </div>
