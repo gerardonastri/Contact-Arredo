@@ -29,7 +29,7 @@ export default function Navbar() {
   return (
     <header
       className={cn(
-        "fixed top-0 w-full z-[999] transition-all duration-300",
+        "fixed top-0 w-full z-[100] transition-all duration-300",
         isScrolled ? "bg-white/80 backdrop-blur-md shadow-sm" : "bg-transparent"
       )}
     >
@@ -41,7 +41,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex md:items-center md:space-x-8">
+          <div className="hidden md:flex md:items-center md:space-x-8 z-[100]">
             {navigation.map((item) => (
               <TransitionLink
                 key={item.name}
@@ -54,7 +54,7 @@ export default function Navbar() {
           </div>
 
           {/* Mobile Navigation */}
-          <div className="md:hidden">
+          <div className="md:hidden bg-white z-[999]">
             <Sheet>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon">
@@ -65,7 +65,7 @@ export default function Navbar() {
               <SheetContent
                 title="sidebar links"
                 side="right"
-                className="w-[240px] sm:w-[300px]"
+                className="w-[240px] sm:w-[300px] bg-white z-[999]"
               >
                 <div className="mt-6 flow-root">
                   <div className="space-y-4">

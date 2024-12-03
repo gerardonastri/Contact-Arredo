@@ -65,19 +65,19 @@ export default function ContactForm() {
   }
 
   return (
-    <section className="relative max-w-[1700px] h-[70vh] px-[3rem] mx-auto rounded-3xl ">
-      <div className="absolute inset-0">
+    <section className="relative w-full lg:max-w-[1700px] h-[80vh] lg:px-[3rem] mx-auto lg:lg:rounded-3xl ">
+      <div className="relative w-full h-full lg:rounded-3xl inset-0">
         <Image
           src="/images/news-hero.jpg"
           alt="Modern luxury home interior"
           fill
-          className="object-cover rounded-3xl"
+          className="object-cover lg:rounded-3xl "
           priority
         />
-        <div className="absolute inset-0 bg-black/60 rounded-3xl" />
+        <div className="absolute inset-0 bg-black/60 lg:rounded-3xl" />
       </div>
 
-      <div className="relative h-full max-w-[1700px] px-[3rem] mx-auto py-16 lg:py-24">
+      <div className="absolute top-0 left-[50%] translate-x-[-50%] h-full w-full md:w-[95%]  px-[1.5rem] lg:px-[3rem] mx-auto py-10 lg:py-24 z-[20]">
         <div className="grid lg:grid-cols-2 gap-12 items-center lg:justify-between">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -85,10 +85,10 @@ export default function ContactForm() {
             transition={{ duration: 0.8 }}
             className="text-white space-y-4 w-full"
           >
-            <h2 className="text-5xl w-full lg:text-6xl font-light leading-tight">
+            <h2 className="text-3xl w-full lg:text-6xl font-light leading-tight">
               Meet Our Dedicated Professionals
             </h2>
-            <p className="text-white/80 max-w-md text-lg">
+            <p className="text-white/80 max-w-md text-sm md:text-lg">
               Finding your perfect home has never been easier. Contact us now
               for customized real estate solutions and unparalleled support.
             </p>
