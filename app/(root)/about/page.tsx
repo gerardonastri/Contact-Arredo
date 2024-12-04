@@ -30,7 +30,7 @@ const About = () => {
       <div className="relative lg:px-[3rem] max-w-[1700px] mx-auto mt-12 lg:mt-[250px] z-[2]">
         <Culture />
       </div>
-      <div className="mt-[150px] px-[3rem] max-w-[1700px] mx-auto">
+      <div className="mt-[200px] px-[3rem] max-w-[1700px] mx-auto">
         <Carousel />
       </div>
     </main>

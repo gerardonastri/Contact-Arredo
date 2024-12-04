@@ -9,7 +9,7 @@ import { Menu } from "lucide-react";
 import TransitionLink from "../TransitionLink";
 
 const navigation = [
-  { name: "Product", href: "/product" },
+  { name: "Products", href: "/products" },
   { name: "About", href: "/about" },
   { name: "News", href: "/news" },
   { name: "Projects", href: "/projects" },
@@ -56,7 +56,7 @@ export default function Navbar() {
           {/* Mobile Navigation */}
           <div className="md:hidden bg-white z-[999]">
             <Sheet>
-              <SheetTrigger asChild>
+              <SheetTrigger title="Open navbar" asChild>
                 <Button variant="ghost" size="icon">
                   <Menu className="h-6 w-6" />
                   <span className="sr-only">Open menu</span>

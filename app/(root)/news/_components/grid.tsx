@@ -13,7 +13,7 @@ const articles = [
     image: "/images/grid/img-1.avif",
     category: "Buy",
     date: "6 May 2020",
-    slug: "#",
+    slug: "/news/123",
   },
   {
     title:
@@ -23,7 +23,7 @@ const articles = [
     image: "/images/grid/img-2.avif",
     category: "Home Improvement",
     date: "1 May 2020",
-    slug: "#",
+    slug: "/news/123",
   },
   {
     title: "7 affordable countries where americans can easily buy real estate",
@@ -31,7 +31,7 @@ const articles = [
       "Housing costs remain high and a politically fraught election is on the horizon, prompting many Americans to consider a move overseas.",
     image: "/images/grid/img-3.avif",
     category: "Buy",
-    slug: "#",
+    slug: "/news/123",
   },
   {
     title:
@@ -40,7 +40,7 @@ const articles = [
       "An unusual, safety-centric residence in Ohio has rapidly found a buyer and is now in contract following multiple offers, The Post has learned",
     image: "/images/grid/img-4.avif",
     category: "Unique Homes",
-    slug: "#",
+    slug: "/news/123",
   },
   {
     title: "7 affordable countries where americans can easily buy real estate",
@@ -48,7 +48,7 @@ const articles = [
       "Housing costs remain high and a politically fraught election is on the horizon, prompting many Americans to consider a move overseas.",
     image: "/images/grid/img-3.avif",
     category: "Buy",
-    slug: "#",
+    slug: "/news/123",
   },
   {
     title:
