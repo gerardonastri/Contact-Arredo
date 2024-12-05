@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import React from "react";
 import Culture from "./_components/culture";
 import Carousel from "./_components/carousel";
+import AboutForm from "./_components/about-form";
 
 const About = () => {
   return (
@@ -32,6 +33,9 @@ const About = () => {
       </div>
       <div className="mt-[200px] px-[3rem] max-w-[1700px] mx-auto">
         <Carousel />
+      </div>
+      <div className="mt-[100px]">
+        <AboutForm />
       </div>
     </main>
   );
