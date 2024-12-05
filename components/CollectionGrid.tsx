@@ -48,7 +48,7 @@ const CollectionGrid = () => {
   };
 
   return (
-    <div className="mt-[80px] max-w-[1700px] px-[3rem] mx-auto">
+    <div className="mt-[50px] lg:mt-[80px] max-w-[1700px] px-4 md:px-[3rem] mx-auto">
       <Masonry
         breakpointCols={breakpointColumnsObj}
         className="my-masonry-grid"

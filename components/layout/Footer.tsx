@@ -1,122 +1,160 @@
+"use client";
+
+import { MapPin, Mail, Phone, Clock } from "lucide-react";
+import Link from "next/link";
 import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer className="mt-[100px] bg-black text-white z-1 relative px-6 py-12 md:py-16 lg:py-20">
-      <div className="max-w-[1700px] md:px-[2rem] mx-auto">
+    <footer className="bg-black text-white/80 py-16 mt-[80px]">
+      <div className="max-w-[1700px] mx-auto px-4 md:px-[3rem]">
+        {/* Header Section */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
-          <div className="space-y-4">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-glimerBold leading-tight">
-              Engage with Us in
-              <br />
-              Conversation.
+          <div className="max-w-xl">
+            <h2 className="text-5xl font-light text-white mb-6">
+              Engage with Us in Conversation.
             </h2>
-            <p className="text-gray-400 max-w-xl">
+            <p className="text-white/60">
               In a global world based on communication, a brand must look beyond
               its borders, open up to new experiences, and dare to be different.
               Meeting the brightest minds of one&apos;s time is the most
               effective way to nurture creativity
             </p>
           </div>
-          <div className="relative aspect-[4/3] lg:aspect-auto">
+          <div className="relative h-[120px] lg:h-[180px] rounded-2xl overflow-hidden">
             <Image
               src="/images/hero.webp"
-              alt="Modern interior with shelving and furniture"
+              alt="Modern interior design"
               fill
-              className="rounded-2xl object-cover w-full h-full"
+              className="object-cover"
             />
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 lg:gap-12 border-t border-gray-800 pt-8">
-          <div className="space-y-4">
-            <h3 className="text-lg font-glimerBold">About</h3>
-            <ul className="space-y-3 text-gray-400">
+        {/* Footer Links Section */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+          {/* About Section */}
+          <div>
+            <h3 className="text-white text-lg font-medium mb-6">About</h3>
+            <ul className="space-y-4">
               <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  Our Story
-                </a>
+                <Link
+                  href="/about"
+                  className="hover:text-white transition-colors"
+                >
+                  About Us
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  Store Locator
-                </a>
+                <Link
+                  href="/projects"
+                  className="hover:text-white transition-colors"
+                >
+                  Projects
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  Sustainability
-                </a>
+                <Link
+                  href="/products"
+                  className="hover:text-white transition-colors"
+                >
+                  Products
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  Careers
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  Contact
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div className="space-y-4">
-            <h3 className="text-lg font-glimerBold">Customer Service</h3>
-            <ul className="space-y-3 text-gray-400">
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  Prices and Payments
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  Shipping
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  Return Policy
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  Terms of Service
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
+                <Link
+                  href="/privacy-policy"
+                  className="hover:text-white transition-colors"
+                >
                   Privacy Policy
-                </a>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/about"
+                  className="hover:text-white transition-colors"
+                >
+                  Contact
+                </Link>
               </li>
             </ul>
           </div>
 
-          <div className="space-y-4">
-            <h3 className="text-lg font-glimerBold">Social Media</h3>
-            <ul className="space-y-3 text-gray-400">
+          {/* Company Info Section */}
+          <div>
+            <h3 className="text-white text-lg font-medium mb-6">
+              Company Info
+            </h3>
+            <ul className="space-y-4">
+              <li className="flex items-center gap-2">
+                <MapPin className="h-5 w-5" />
+                <span>123 Design Street, Milan, Italy</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <Mail className="h-5 w-5" />
+                <span>contact@company.com</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <Phone className="h-5 w-5" />
+                <span>+39 123 456 7890</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <Clock className="h-5 w-5 mt-1" />
+                <div>
+                  <p>Mon - Fri: 9:00 - 18:00</p>
+                  <p>Sat: 10:00 - 16:00</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          {/* Social Media Section */}
+          <div>
+            <h3 className="text-white text-lg font-medium mb-6">
+              Social Media
+            </h3>
+            <ul className="space-y-4">
               <li>
-                <a href="#" className="hover:text-white transition-colors">
+                <Link
+                  href="/instagram"
+                  className="hover:text-white transition-colors"
+                >
                   Instagram
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors">
+                <Link
+                  href="/facebook"
+                  className="hover:text-white transition-colors"
+                >
                   Facebook
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors">
+                <Link
+                  href="/linkedin"
+                  className="hover:text-white transition-colors"
+                >
                   LinkedIn
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
 
-          <div className="md:text-right">
-            <a href="#" className="inline-block">
-              <span className="sr-only">Contact Arredo</span>
-              <h2 className="text-4xl font-glimerBold">Contact Arredo</h2>
-            </a>
+          {/* Map Section */}
+          <div>
+            <h3 className="text-white text-lg font-medium mb-6">Find Us</h3>
+            <div className="relative h-[200px] rounded-lg overflow-hidden">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6046.535730008974!2d14.67872581229173!3d40.73413103614012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x133bc0b5e44a36bb%3A0xcfbda39a45386f28!2sContact%20arredo%20S.R.L%20-%20ARREDO%20BAGNO%2C%20PAVIMENTI%2C%20PARQUET%2C%20RISTRUTTURAZIONI!5e0!3m2!1sit!2sit!4v1733415238295!5m2!1sit!2sit"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
           </div>
         </div>
       </div>

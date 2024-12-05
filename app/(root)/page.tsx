@@ -34,7 +34,7 @@ const page = () => {
       <HeroSlider slides={slides} />
       <FurnitureGallery />
       <AnimatedStats />
-      <div className="flex flex-col md:flex-row gap-5 md:gap-0 justify-between w-full px-[3rem] lg:max-w-[1700px] mx-auto mt-[120px]">
+      <div className="flex flex-col md:flex-row gap-5 md:gap-0 justify-between w-full px-4 md:px-[3rem] lg:max-w-[1700px] mx-auto mt-[30px] md:mt-[120px]">
         <h2 className="font-glimerBold text-3xl md:text-5xl">
           Explore Our Proudly <br />
           Collection

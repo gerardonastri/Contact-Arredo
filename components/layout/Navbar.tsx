@@ -73,7 +73,7 @@ export default function Navbar() {
                       <TransitionLink
                         key={item.name}
                         href={item.href}
-                        className="block font-glimerBold px-3 py-2 text-base text-black hover:bg-gray-50 rounded-md hover:border-b border-black"
+                        className="block font-glimerBold px-3 py-2 text-base text-black hover:bg-gray-50 rounded-md"
                       >
                         {item.name}
                       </TransitionLink>
