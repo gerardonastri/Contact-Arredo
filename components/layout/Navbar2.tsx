@@ -2,14 +2,15 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Search } from "lucide-react";
+import { Search } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import TransitionLink from "../TransitionLink";
 
 export default function Navbar2() {
-  const [isOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -20,6 +21,15 @@ export default function Navbar2() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleLinkClick = () => {
+    setIsOpen(false);
+  };
+
+  const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    // Add your search logic here
+  };
+
   return (
     <header
       className={cn(
@@ -29,7 +39,7 @@ export default function Navbar2() {
     >
       <nav className="max-w-[1700px] mx-auto px-4 lg:px-[3rem] h-16 flex items-center justify-between">
         {/* Mobile Menu Trigger */}
-        <Sheet>
+        <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetTrigger asChild>
             <Button variant="ghost" size="icon" className="md:hidden">
               <div className="space-y-1.5">
@@ -53,27 +63,43 @@ export default function Navbar2() {
               <TransitionLink
                 href="/products"
                 className="text-sm hover:text-gray-600 transition-colors"
+                onClick={handleLinkClick}
               >
                 Products
               </TransitionLink>
               <TransitionLink
                 href="/about"
                 className="text-sm hover:text-gray-600 transition-colors"
+                onClick={handleLinkClick}
               >
                 About
               </TransitionLink>
               <TransitionLink
                 href="/news"
                 className="text-sm hover:text-gray-600 transition-colors"
+                onClick={handleLinkClick}
               >
                 News
               </TransitionLink>
               <TransitionLink
                 href="/projects"
                 className="text-sm hover:text-gray-600 transition-colors"
+                onClick={handleLinkClick}
               >
                 Projects
               </TransitionLink>
+              <form onSubmit={handleSearch} className="mt-4">
+                <div className="relative">
+                  <Input
+                    type="search"
+                    placeholder="Search..."
+                    className="w-full pl-10 pr-4 py-2 text-sm text-gray-900 bg-gray-100 rounded-md focus:outline-none focus:bg-white focus:ring-2 focus:ring-black"
+                  />
+                  <div className="absolute inset-y-0 left-0 flex items-center pl-3">
+                    <Search className="h-5 w-5 text-gray-400" />
+                  </div>
+                </div>
+              </form>
             </nav>
           </SheetContent>
         </Sheet>
@@ -114,20 +140,18 @@ export default function Navbar2() {
           <h1 className="text-2xl font-glimerBold">Contact Arredo</h1>
         </TransitionLink>
 
-        {/* Right Icons */}
-        <div className="flex items-center space-x-4">
-          <Button variant="ghost" size="icon">
-            <Search className="h-5 w-5" />
-            <span className="sr-only">Search</span>
-          </Button>
-          {/* <Button variant="ghost" size="icon">
-            <ShoppingBag className="h-5 w-5" />
-            <span className="sr-only">Shopping cart</span>
-          </Button>
-          <Button variant="ghost" size="icon">
-            <User className="h-5 w-5" />
-            <span className="sr-only">User account</span>
-          </Button> */}
+        {/* Desktop Search Form */}
+        <div className="hidden md:block">
+          <form onSubmit={handleSearch} className="relative">
+            <Input
+              type="search"
+              placeholder="Search..."
+              className="lg:min-w-[250px] w-48 pl-10 pr-4 py-2 text-sm text-gray-900 bg-gray-100 rounded-md focus:outline-none focus:bg-white focus:ring-2 focus:ring-black"
+            />
+            <div className="absolute inset-y-0 left-0 flex items-center pl-3">
+              <Search className="h-5 w-5 text-gray-400" />
+            </div>
+          </form>
         </div>
       </nav>
     </header>

@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function NewsHero() {
   return (
-    <section className="max-w-[1700px] mx-auto px-[3rem]">
+    <section className="max-w-[1700px] mx-auto px-4 md:px-[3rem]">
       <div className="space-y-6 text-center">
         <span className="inline-block text-sm font-medium text-emerald-600">
           News
