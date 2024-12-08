@@ -23,25 +23,34 @@ export const metadata: Metadata = {
   title: "Contact Arredo",
   description:
     "Contact arredo offre numerosi prodotti per la realizzazione della tua casa. Pavimenti e rivestimenti, parquet, arredobagno, rubinetteria e box doccia. ",
+  keywords: [
+    "arredamento casa",
+    "pavimenti",
+    "rivestimenti",
+    "parquet",
+    "arredobagno",
+    "rubinetteria",
+    "box doccia",
+    "design interni",
+    "prodotti per la casa",
+    "Contact Arredo",
+  ],
+
   openGraph: {
     description:
-      "The Ultimate Nextjs 14 Starter Kit for quickly building your SaaS, giving you time to focus on what really matters",
-    images: [
-      "https://utfs.io/f/8a428f85-ae83-4ca7-9237-6f8b65411293-eun6ii.png",
-    ],
-    url: "https://starter.rasmic.xyz/",
+      "Contact arredo offre numerosi prodotti per la realizzazione della tua casa. Pavimenti e rivestimenti, parquet, arredobagno, rubinetteria e box doccia.",
+    images: ["/logo.png"],
+    url: "https://contactarredo.it",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Nextjs Starter Kit",
+    title: "Contact Arredo",
     description:
-      "The Ultimate Nextjs 14 Starter Kit for quickly building your SaaS, giving you time to focus on what really matters",
+      "Contact arredo offre numerosi prodotti per la realizzazione della tua casa. Pavimenti e rivestimenti, parquet, arredobagno, rubinetteria e box doccia.",
     siteId: "",
-    creator: "@rasmic",
+    creator: "@gerardonastri",
     creatorId: "",
-    images: [
-      "https://utfs.io/f/8a428f85-ae83-4ca7-9237-6f8b65411293-eun6ii.png",
-    ],
+    images: ["/logo.png"],
   },
 };
 

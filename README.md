@@ -27,6 +27,7 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 - **Shadcn/ui**
 - **Framer-motion**
 - **Zod**
+- **nodemailer**
 
 ## Features
 

@@ -65,7 +65,7 @@ export default function ContactForm() {
   }
 
   return (
-    <section className="relative w-full lg:max-w-[1700px] h-[80vh] lg:px-[3rem] mx-auto lg:lg:rounded-3xl ">
+    <section className="relative w-full lg:max-w-[1700px] h-[95vh] lg:px-[3rem] mx-auto lg:lg:rounded-3xl ">
       <div className="relative w-full h-full lg:rounded-3xl inset-0">
         <Image
           src="/images/news-hero.jpg"

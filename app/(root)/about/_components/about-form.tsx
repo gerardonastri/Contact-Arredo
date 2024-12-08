@@ -15,17 +15,25 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-// import { useToast } from "@/hooks/use-toast";
-// import { ToastAction } from "@/components/ui/toast";
+import { useToast } from "@/hooks/use-toast";
+import { ToastAction } from "@/components/ui/toast";
 
-import { MapPin, Mail, Phone, Clock } from 'lucide-react'
+import { MapPin, Mail, Phone, Clock } from "lucide-react";
 
 const contactInfo = [
-  { icon: MapPin, title: "Location", content: "123 Design Street, Milan, Italy" },
+  {
+    icon: MapPin,
+    title: "Location",
+    content: "123 Design Street, Milan, Italy",
+  },
   { icon: Mail, title: "Email", content: "contact@yourcompany.com" },
   { icon: Phone, title: "Phone", content: "+39 123 456 7890" },
-  { icon: Clock, title: "Working Hours", content: ["Mon - Fri: 9:00 AM - 6:00 PM", "Sat: 10:00 AM - 4:00 PM"] },
-]
+  {
+    icon: Clock,
+    title: "Working Hours",
+    content: ["Mon - Fri: 9:00 AM - 6:00 PM", "Sat: 10:00 AM - 4:00 PM"],
+  },
+];
 
 const formSchema = z.object({
   fullName: z.string().min(2, {
@@ -42,7 +50,7 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 export default function AboutForm() {
-  //   const toast = useToast();
+  const { toast } = useToast();
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -53,28 +61,49 @@ export default function AboutForm() {
   });
 
   async function onSubmit(data: FormValues) {
-    console.log(data);
-    // try {
-    //   // Simula una chiamata API
-    //   await new Promise((resolve) => setTimeout(resolve, 1000));
-    //   toast({
-    //     title: "Messaggio inviato",
-    //     description: "Il tuo messaggio è stato inviato con successo!",
-    //     action: <ToastAction altText="Chiudi">Chiudi</ToastAction>,
-    //   });
-    //   form.reset();
-    // } catch (error) {
-    //   toast({
-    //     variant: "destructive",
-    //     title: "Errore",
-    //     description: "Si è verificato un errore durante l'invio del messaggio.",
-    //     action: <ToastAction altText="Riprova">Riprova</ToastAction>,
-    //   });
-    // }
+    const { fullName, email, description } = data;
+    const payload = {
+      name: fullName, // Rinomina fullName in name
+      email, // email rimane invariato
+      message: description, // Rinomina description in message
+    };
+    try {
+      // Simula una chiamata API
+      const response = await fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (response.ok) {
+        toast({
+          title: "Messaggio inviato",
+          description: "Il tuo messaggio è stato inviato con successo!",
+          action: <ToastAction altText="Chiudi">Chiudi</ToastAction>,
+        });
+      } else {
+        toast({
+          variant: "destructive",
+          title: "Errore",
+          description:
+            "Si è verificato un errore durante l'invio del messaggio.",
+          action: <ToastAction altText="Riprova">Riprova</ToastAction>,
+        });
+      }
+      form.reset();
+    } catch (error) {
+      console.log(error);
+      toast({
+        variant: "destructive",
+        title: "Errore",
+        description: "Si è verificato un errore durante l'invio del messaggio.",
+        action: <ToastAction altText="Riprova">Riprova</ToastAction>,
+      });
+    }
   }
 
   return (
-    <section className="relative w-full lg:max-w-[1700px] h-[110vh] md:h-[90vh] lg:px-[3rem] mx-auto lg:lg:rounded-3xl ">
+    <section className="relative w-full lg:max-w-[1700px] h-[120vh] md:h-[90vh] lg:px-[3rem] mx-auto lg:lg:rounded-3xl ">
       <div className="relative w-full h-full lg:rounded-3xl inset-0">
         <Image
           src="/images/news-hero.jpg"
@@ -98,28 +127,30 @@ export default function AboutForm() {
               Meet Our Dedicated Professionals
             </h2>
             <div className="space-y-8">
-            {contactInfo.map((item, index) => (
-              <motion.div 
-                key={item.title}
-                className="flex items-start gap-4"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 * (index + 1) }}
-              >
-                <item.icon className="h-6 w-6 text-white/80 mt-1" />
-                <div>
-                  <p className="font-medium text-lg">{item.title}</p>
-                  {Array.isArray(item.content) ? (
-                    item.content.map((line, i) => (
-                      <p key={i} className="text-white/80">{line}</p>
-                    ))
-                  ) : (
-                    <p className="text-white/80">{item.content}</p>
-                  )}
-                </div>
-              </motion.div>
-            ))}
-          </div>
+              {contactInfo.map((item, index) => (
+                <motion.div
+                  key={item.title}
+                  className="flex items-start gap-4"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 * (index + 1) }}
+                >
+                  <item.icon className="h-6 w-6 text-white/80 mt-1" />
+                  <div>
+                    <p className="font-medium text-lg">{item.title}</p>
+                    {Array.isArray(item.content) ? (
+                      item.content.map((line, i) => (
+                        <p key={i} className="text-white/80">
+                          {line}
+                        </p>
+                      ))
+                    ) : (
+                      <p className="text-white/80">{item.content}</p>
+                    )}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </motion.div>
 
           <motion.div

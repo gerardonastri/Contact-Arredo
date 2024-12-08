@@ -2,7 +2,7 @@ import Footer from "@/components/layout/Footer";
 // import Navbar from "@/components/layout/Navbar";
 import Navbar2 from "@/components/layout/Navbar2";
 import React from "react";
-// import { Toaster } from "@/components/ui/toaster";
+import { Toaster } from "@/components/ui/toaster";
 
 const layout = ({
   children,
@@ -15,7 +15,7 @@ const layout = ({
       {children}
       <Footer />
 
-      {/* <Toaster /> */}
+      <Toaster />
     </div>
   );
 };
