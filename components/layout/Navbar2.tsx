@@ -26,8 +26,9 @@ export default function Navbar2() {
     setIsOpen(false);
   };
 
-  const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSearch = () => {
+    // e.preventDefault();
+    setIsOpen(false)
     // Add your search logic here
   };
 
@@ -89,18 +90,19 @@ export default function Navbar2() {
               >
                 Projects
               </TransitionLink>
-              <form onSubmit={handleSearch} className="mt-4">
+              <Form scroll={false} action="/search" onSubmit={handleSearch} className="mt-4">
                 <div className="relative">
                   <Input
+                    name="query"
                     type="search"
                     placeholder="Search..."
                     className="w-full pl-10 pr-4 py-2 text-sm text-gray-900 bg-gray-100 rounded-md focus:outline-none focus:bg-white focus:ring-2 focus:ring-black"
                   />
-                  <div className="absolute inset-y-0 left-0 flex items-center pl-3">
+                  <button type="submit" className="absolute inset-y-0 left-0 flex items-center pl-3">
                     <Search className="h-5 w-5 text-gray-400" />
-                  </div>
+                  </button>
                 </div>
-              </form>
+              </Form>
             </nav>
           </SheetContent>
         </Sheet>
