@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import CookieBanner from "@/components/CookieBanner";
 
 // Importazione dei font locali
 const myFont = localFont({
@@ -65,6 +66,7 @@ export default function RootLayout({
         className={`${myFont.variable} ${gilmerRegular.variable} font-poppins antialiased`}
       >
         {children}
+        <CookieBanner />
       </body>
     </html>
   );
