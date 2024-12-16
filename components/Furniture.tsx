@@ -1,11 +1,13 @@
 "use client";
 
-// import { motion } from "framer-motion";
+
 import { Card } from "@/components/ui/card";
 // import { Badge } from "@/components/ui/badge";
 // import { ArrowUpRight } from "lucide-react";
 import { type GalleryItem } from "@/types/gallery";
+import { motion, useAnimation, useInView } from "framer-motion";
 import Image from "next/image";
+import { useEffect, useRef } from "react";
 
 export const galleryItems: GalleryItem[] = [
   {
@@ -32,11 +34,51 @@ export const galleryItems: GalleryItem[] = [
 ];
 
 export default function FurnitureGallery() {
+  const controls = useAnimation();
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true });
+
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    }
+  }, [controls, inView]);
+
+  const containerVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        when: "beforeChildren",
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5 },
+    },
+  };
   return (
-    <div className="w-full max-w-[1700px] lg:px-[3rem] mt-[100px] mx-auto p-4">
+    <motion.div
+      ref={ref}
+      initial="hidden"
+      animate={controls}
+      variants={containerVariants}
+      className="w-full max-w-[1700px] lg:px-[3rem] mt-[100px] mx-auto p-4"
+    >
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 h-[70vh]">
         {/* Main Feature */}
-        <div className="lg:col-span-2 relative h-full">
+        <motion.div
+          variants={itemVariants}
+          className="lg:col-span-2 relative h-full"
+        >
           <Card className="overflow-hidden rounded-3xl h-full">
             <div className="relative w-full h-full">
               <Image
@@ -58,7 +100,7 @@ export default function FurnitureGallery() {
               </div>
             </div>
           </Card>
-        </div>
+        </motion.div>
 
         {/* Side Cards */}
         <div className="flex flex-col gap-4 h-full">
@@ -88,6 +130,6 @@ export default function FurnitureGallery() {
           ))}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

@@ -4,7 +4,8 @@ import { motion } from "framer-motion";
 import { ArrowLeft, Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+// import { Button } from "@/components/ui/button";
+import ReviewForm from "@/components/ReviewForm";
 
 // Mock data for the single project
 const project = {
@@ -122,8 +123,15 @@ export default function SingleProjectPage() {
             ))}
           </div>
         </motion.div>
-
         <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+        >
+          <ReviewForm />
+        </motion.div>
+
+        {/* <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.8 }}
@@ -137,7 +145,7 @@ export default function SingleProjectPage() {
               <ArrowLeft className="mr-2 h-4 w-4" /> Back to Projects
             </Button>
           </Link>
-        </motion.div>
+        </motion.div> */}
       </div>
     </div>
   );
