@@ -1,11 +1,40 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { type HeroSliderProps } from "../types/slider";
 
-export default function HeroSlider({
+const AnimatedHeroSlider = ({ slides, autoPlayInterval = 8000 }: HeroSliderProps) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+
+  const containerVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { 
+        duration: 0.8, 
+        ease: "easeOut" 
+      } 
+    }
+  };
+
+  return (
+    <motion.div
+      ref={ref}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      variants={containerVariants}
+    >
+      <HeroSlider slides={slides} autoPlayInterval={autoPlayInterval} />
+    </motion.div>
+  );
+};
+
+
+function HeroSlider({
   slides,
   autoPlayInterval = 8000,
 }: HeroSliderProps) {
@@ -130,3 +159,5 @@ export default function HeroSlider({
     </div>
   );
 }
+
+export default AnimatedHeroSlider
