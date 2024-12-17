@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import Image from "next/image";
@@ -126,7 +126,7 @@ const products = [
   },
 ];
 
-export default function ProductsPage() {
+function Page() {
   const [activeCategory, setActiveCategory] = useState("All");
   const searchParams = useSearchParams();
 
@@ -229,4 +229,10 @@ export default function ProductsPage() {
       </div>
     </div>
   );
+}
+
+export default function ProductsPage(){
+  <Suspense>
+    <Page />
+  </Suspense>
 }
