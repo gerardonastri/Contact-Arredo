@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import Image from "next/image";
@@ -126,12 +126,11 @@ const products = [
   },
 ];
 
-function Page() {
+export default function Page() {
   const [activeCategory, setActiveCategory] = useState("All");
   const searchParams = useSearchParams();
 
   useEffect(() => {
-   
     const query = searchParams.get("q");
     if (query && query?.length > 0) {
       setActiveCategory(query);
@@ -229,10 +228,4 @@ function Page() {
       </div>
     </div>
   );
-}
-
-export default function ProductsPage(){
-  <Suspense>
-    <Page />
-  </Suspense>
 }
