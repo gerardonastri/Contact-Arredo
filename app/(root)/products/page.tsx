@@ -6,7 +6,7 @@ import { ExternalLink } from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { useSearchParams } from "next/navigation";
+// import { useSearchParams } from "next/navigation";
 
 const categories = [
   "Pavimenti e Rivestimenti",
@@ -128,14 +128,16 @@ const products = [
 
 export default function Page() {
   const [activeCategory, setActiveCategory] = useState("All");
-  const searchParams = useSearchParams();
+  // const searchParams = useSearchParams();
 
   useEffect(() => {
-    const query = searchParams.get("q");
+    const params = new URLSearchParams(window.location.search);
+    const query = params.get("q");
+    // const query = searchParams.get("q");
     if (query && query?.length > 0) {
       setActiveCategory(query);
     }
-  }, [searchParams]);
+  }, []);
 
   const filteredProducts =
     activeCategory === "All"
