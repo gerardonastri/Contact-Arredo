@@ -12,13 +12,16 @@ export default function Footer() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
           <div className="max-w-xl">
             <h2 className="text-5xl font-light text-white mb-6">
-              Engage with Us in Conversation.
+              Parla con Noi per Creare il Tuo Spazio Unico.
             </h2>
             <p className="text-white/60">
-              In a global world based on communication, a brand must look beyond
-              its borders, open up to new experiences, and dare to be different.
-              Meeting the brightest minds of one&apos;s time is the most
-              effective way to nurture creativity
+              Nel nostro mondo sempre più connesso, crediamo che ogni progetto
+              nasca da un dialogo aperto. Da Contact Arredo, superiamo i confini
+              del design tradizionale, trasformando le idee dei nostri clienti
+              in realtà uniche. Collaborare con i migliori professionisti e
+              ascoltare le esigenze di chi ci sceglie è il nostro modo per
+              innovare e dare vita a soluzioni d&apos;arredo che ispirano ogni
+              giorno.
             </p>
           </div>
           <div className="relative h-[120px] lg:h-[180px] rounded-2xl overflow-hidden">
@@ -88,21 +91,21 @@ export default function Footer() {
             <ul className="space-y-4">
               <li className="flex items-center gap-2">
                 <MapPin className="h-5 w-5" />
-                <span>123 Design Street, Milan, Italy</span>
+                <span>Via Nazionale, 247 Nocera Superiore (SA)</span>
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="h-5 w-5" />
-                <span>contact@company.com</span>
+                <span>contact.arredo@virgilio.it</span>
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="h-5 w-5" />
-                <span>+39 123 456 7890</span>
+                <span>+39 081 3650706</span>
               </li>
               <li className="flex items-start gap-2">
                 <Clock className="h-5 w-5 mt-1" />
                 <div>
-                  <p>Mon - Fri: 9:00 - 18:00</p>
-                  <p>Sat: 10:00 - 16:00</p>
+                  <p>Mon - Fri: 9:00 - 13:00, 16:00-20:00</p>
+                  <p>Sat: 9:00 - 13:00</p>
                 </div>
               </li>
             </ul>
@@ -116,7 +119,7 @@ export default function Footer() {
             <ul className="space-y-4">
               <li>
                 <Link
-                  href="/instagram"
+                  href="https://www.instagram.com/contact.arredo/"
                   className="hover:text-white transition-colors"
                 >
                   Instagram
@@ -124,20 +127,20 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/facebook"
+                  href="https://www.facebook.com/contactarredo/"
                   className="hover:text-white transition-colors"
                 >
                   Facebook
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link
                   href="/linkedin"
                   className="hover:text-white transition-colors"
                 >
                   LinkedIn
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </div>
 
@@ -146,9 +149,10 @@ export default function Footer() {
             <h3 className="text-white text-lg font-medium mb-6">Find Us</h3>
             <div className="relative h-[200px] rounded-lg overflow-hidden">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6046.535730008974!2d14.67872581229173!3d40.73413103614012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x133bc0b5e44a36bb%3A0xcfbda39a45386f28!2sContact%20arredo%20S.R.L%20-%20ARREDO%20BAGNO%2C%20PAVIMENTI%2C%20PARQUET%2C%20RISTRUTTURAZIONI!5e0!3m2!1sit!2sit!4v1733415238295!5m2!1sit!2sit"
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12093.07219363671!2d14.681305999999998!3d40.734127!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x133bc0b5e44a36bb%3A0xcfbda39a45386f28!2sContact%20arredo%20S.R.L%20-%20ARREDO%20BAGNO%2C%20PAVIMENTI%2C%20PARQUET%2C%20RISTRUTTURAZIONI!5e0!3m2!1sit!2sus!4v1734951490556!5m2!1sit!2sus"
                 width="100%"
                 height="100%"
+                title="Contact Arredo Position"
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"

@@ -107,11 +107,11 @@ export default function ContactForm() {
             className="text-white space-y-4 w-full"
           >
             <h2 className="text-3xl w-full lg:text-6xl font-light leading-tight">
-              Meet Our Dedicated Professionals
+              Conosci il Nostro Team di Esperti
             </h2>
             <p className="text-white/80 max-w-md text-sm md:text-lg">
-              Finding your perfect home has never been easier. Contact us now
-              for customized real estate solutions and unparalleled support.
+              Realizza il Tuo Spazio Ideale. Contattaci per Soluzioni d’Arredo
+              Personalizzate e Supporto Completo.
             </p>
           </motion.div>
 

@@ -153,7 +153,7 @@ export default function Page() {
           transition={{ duration: 0.5 }}
           className="text-5xl md:text-7xl font-light mb-8"
         >
-          Our Products
+          I Nostri Prodotti
         </motion.h1>
 
         <motion.div

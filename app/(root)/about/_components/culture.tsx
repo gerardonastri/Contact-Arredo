@@ -14,10 +14,9 @@ export default function Culture() {
               La nostra cultura
             </h2>
             <p className="mt-2 text-white text-center lg:text-right lg:max-w-[70%] ml-auto">
-              Lorem ipsum dolor sit amet consectetur. At vel feugiat massa quis
-              semper quam massa eget. Eu dictum est at dui suscipit velit. Lorem
-              ipsum dolor sit amet consectetur. At vel feugiat massa quis semper
-              quam massa eget.
+              Crediamo che il nostro lavoro non si limiti alla creazione di
+              mobili e arredi, ma che sia un’opportunità per costruire relazioni
+              solide e durature con i nostri clienti e collaboratori.
             </p>
           </div>
           <div className="aspect-video">
@@ -40,10 +39,26 @@ export default function Culture() {
           </div>
           <div className="grid grid-cols-2 gap-6">
             {[
-              { icon: Coffee, title: "Consulenza" },
-              { icon: Users, title: "Collaborazione" },
-              { icon: BookOpen, title: "Formazione" },
-              { icon: Briefcase, title: "Supporto" },
+              {
+                icon: Coffee,
+                title: "Consulenza",
+                text: "Ascoltiamo le tue esigenze per creare soluzioni su misura, guidandoti in ogni fase del progetto",
+              },
+              {
+                icon: Users,
+                title: "Collaborazione",
+                text: "Lavoriamo fianco a fianco con i nostri clienti e partner per trasformare idee in realtà.",
+              },
+              {
+                icon: BookOpen,
+                title: "Formazione",
+                text: "Investiamo nel nostro team per garantire competenze sempre aggiornate e innovative.",
+              },
+              {
+                icon: Briefcase,
+                title: "Supporto",
+                text: "Offriamo assistenza continua, anche dopo la realizzazione, per garantirti un'esperienza senza pensieri.",
+              },
             ].map((item, index) => (
               <div key={index} className="p-4 rounded-xl">
                 <div className="w-10 h-10 bg-[#571A06] rounded-full mb-1 flex items-center justify-center">
@@ -52,10 +67,7 @@ export default function Culture() {
                 <h3 className="text-lg font-glimerBold text-[#571A06] mb-2">
                   {item.title}
                 </h3>
-                <p className="text-sm text-white">
-                  Lorem ipsum dolor sit amet consectetur. At et massa quis
-                  fringilla. Nunc ut sit lacus tellus.
-                </p>
+                <p className="text-sm text-white">{item.text}</p>
               </div>
             ))}
           </div>

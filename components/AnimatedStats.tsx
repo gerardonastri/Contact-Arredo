@@ -34,10 +34,10 @@ function Counter({ value, duration = 2 }: CounterProps) {
 
 export default function AnimatedStats() {
   const stats = [
-    { value: 500, label: "Products", suffix: "+" },
-    { value: 20, label: "Projects", suffix: "+" },
-    { value: 50, label: "Satisfied Customers", suffix: "+" },
-    { value: "1", label: "Top 1 in Paris", suffix: "st" },
+    { value: 500, label: "Prodotti", suffix: "+" },
+    { value: 20, label: "Progetti", suffix: "+" },
+    { value: 50, label: "Clienti Soddisfatti", suffix: "+" },
+    { value: "40", label: "TAnni di esperienza", suffix: "+" },
   ];
 
   const ref = useRef(null);

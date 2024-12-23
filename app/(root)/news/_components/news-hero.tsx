@@ -9,13 +9,14 @@ export default function NewsHero() {
         </span>
 
         <h2 className="text-4xl md:text-5xl font-normal text-gray-900 max-w-3xl mx-auto leading-tight">
-          Stay Updated with Contact Arredo Latest News and Insights
+          Rimani aggiornato con le ultime notizie e approfondimenti di Contact
+          Arredo
         </h2>
 
         <p className="text-gray-500 max-w-2xl mx-auto">
-          At Contact Arredo, we understand the importance of staying updated
-          with the latest trends, market alerts, and insights in the luxury real
-          estate market.
+          Noi di Contact Arredo comprendiamo quanto sia importante rimanere
+          aggiornati sulle ultime tendenze, sugli avvisi di mercato e sulle
+          intuizioni del mercato immobiliare di lusso.
         </p>
       </div>
 

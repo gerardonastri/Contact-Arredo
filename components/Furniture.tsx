@@ -1,6 +1,5 @@
 "use client";
 
-
 import { Card } from "@/components/ui/card";
 // import { Badge } from "@/components/ui/badge";
 // import { ArrowUpRight } from "lucide-react";
@@ -12,22 +11,24 @@ import { useEffect, useRef } from "react";
 export const galleryItems: GalleryItem[] = [
   {
     id: 1,
-    title: "Modern Minimalist",
-    description: "Experience the perfect blend of comfort and style",
+    title: "Design Italiano d'Eccellenza",
+    description:
+      "Soluzioni d'arredo su misura per ambienti eleganti e funzionali",
     tag: "Georgeus Interior",
     image: "/images/furniture.webp",
   },
   {
     id: 2,
-    title: "Into a gallery of elegance",
-    description: "Aesthetic furniture where every piece tells a story of style",
+    title: "Estetica",
+    description:
+      "Trasformiamo ogni spazio in un'opera d'arte con mobili raffinati ed esclusivi",
     tag: "Aesthetic",
     image: "/images/furniture.webp",
   },
   {
     id: 3,
-    title: "Indulge in the artistry",
-    description: "of everyday living",
+    title: "Miglior Arredamento",
+    description: "Arredi su misura che sposano il comfort con la bellezza.",
     tag: "Best Furniture",
     image: "/images/furniture.webp",
   },

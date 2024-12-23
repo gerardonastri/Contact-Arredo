@@ -24,14 +24,14 @@ const contactInfo = [
   {
     icon: MapPin,
     title: "Location",
-    content: "123 Design Street, Milan, Italy",
+    content: "Via Nazionale, 247 Nocera Superiore (SA)",
   },
-  { icon: Mail, title: "Email", content: "contact@yourcompany.com" },
-  { icon: Phone, title: "Phone", content: "+39 123 456 7890" },
+  { icon: Mail, title: "Email", content: "contact.arredo@virgilio.it" },
+  { icon: Phone, title: "Phone", content: "+39 081 3650706" },
   {
     icon: Clock,
     title: "Working Hours",
-    content: ["Mon - Fri: 9:00 AM - 6:00 PM", "Sat: 10:00 AM - 4:00 PM"],
+    content: ["Mon - Fri: 9:00 - 13:00, 16:00-20:00", "Sat: 9:00 - 13:00"],
   },
 ];
 
@@ -124,7 +124,7 @@ export default function AboutForm() {
             className="text-white space-y-4 w-full"
           >
             <h2 className="text-3xl w-full lg:text-6xl font-light leading-tight">
-              Meet Our Dedicated Professionals
+              Conosci il Nostro Team di Esperti
             </h2>
             <div className="space-y-8">
               {contactInfo.map((item, index) => (
