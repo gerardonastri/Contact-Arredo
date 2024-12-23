@@ -6,6 +6,7 @@ import { ExternalLink } from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { products } from "@/constants/products";
 // import { useSearchParams } from "next/navigation";
 
 const categories = [
@@ -15,115 +16,6 @@ const categories = [
   "Arredo bagno",
   "Rubinetteria",
   "Box doccia",
-];
-
-const products = [
-  {
-    name: "Novabell",
-    category: "Pavimenti e Rivestimenti",
-    url: "https://www.novabell.it",
-  },
-  {
-    name: "Dado",
-    category: "Pavimenti e Rivestimenti",
-    url: "https://www.dadoceramica.it",
-  },
-  {
-    name: "Impronta",
-    category: "Pavimenti e Rivestimenti",
-    url: "https://www.impronta.it",
-  },
-  {
-    name: "Antica Ceramica di Rubiera",
-    category: "Pavimenti e Rivestimenti",
-    url: "https://www.anticaceramicarubiera.it",
-  },
-  {
-    name: "Prismacer",
-    category: "Pavimenti e Rivestimenti",
-    url: "https://www.prismacer.es",
-  },
-  {
-    name: "Studio One",
-    category: "Pavimenti e Rivestimenti",
-    url: "https://www.studiooneceramiche.it",
-  },
-  {
-    name: "Exagres",
-    category: "Pavimenti e Rivestimenti",
-    url: "https://www.exagres.es",
-  },
-  {
-    name: "Flaviker",
-    category: "Pavimenti e Rivestimenti",
-    url: "https://www.flavikerpisa.it",
-  },
-  {
-    name: "Tecnolam",
-    category: "Pavimenti e Rivestimenti",
-    url: "https://www.tecnolam.it",
-  },
-  {
-    name: "Mac3",
-    category: "Pavimenti e Rivestimenti",
-    url: "https://www.mac3.it",
-  },
-  {
-    name: "Keradom",
-    category: "Pavimenti e Rivestimenti",
-    url: "https://www.keradom.it",
-  },
-  {
-    name: "Cerasarda",
-    category: "Pavimenti e Rivestimenti",
-    url: "https://www.cerasarda.it",
-  },
-  { name: "Tavar", category: "Parquet", url: "https://www.tavar.it" },
-  {
-    name: "Parquet Italia",
-    category: "Parquet",
-    url: "https://www.parquetitalia.it",
-  },
-  {
-    name: "Azzurra",
-    category: "Sanitari",
-    url: "https://www.azzurraceramica.it",
-  },
-  { name: "Globo", category: "Sanitari", url: "https://www.ceramicaglobo.com" },
-  { name: "Nic", category: "Sanitari", url: "https://www.nicdesign.it" },
-  {
-    name: "Disegno Ceramica",
-    category: "Sanitari",
-    url: "https://www.disegnoceramica.com",
-  },
-  {
-    name: "Archeda",
-    category: "Arredo bagno",
-    url: "https://www.archedabagno.it",
-  },
-  { name: "Arcom", category: "Arredo bagno", url: "https://www.arcom.it" },
-  {
-    name: "Falegnameria Adriatica",
-    category: "Arredo bagno",
-    url: "https://www.falegnameriadriatica.it",
-  },
-  { name: "Nic", category: "Arredo bagno", url: "https://www.nicdesign.it" },
-  { name: "Arblu'", category: "Arredo bagno", url: "https://www.arblu.it" },
-  {
-    name: "Treemme",
-    category: "Rubinetteria",
-    url: "https://www.treemmetap.it",
-  },
-  { name: "Vema", category: "Rubinetteria", url: "https://www.vemastore.com" },
-  { name: "Demm", category: "Rubinetteria", url: "https://www.demm.it" },
-  { name: "PDP", category: "Box doccia", url: "https://www.pdpboxdoccia.com" },
-  { name: "Arblu'", category: "Box doccia", url: "https://www.arblu.it" },
-  { name: "GME", category: "Box doccia", url: "https://www.gmeitaly.com" },
-  {
-    name: "Relax",
-    category: "Box doccia",
-    url: "https://www.relaxboxdoccia.it",
-  },
 ];
 
 export default function Page() {
@@ -206,7 +98,7 @@ export default function Page() {
                   >
                     <div className="aspect-square relative mb-4">
                       <Image
-                        src={`/images/hero.webp`}
+                        src={product.img}
                         alt={`${product.name} logo`}
                         fill
                         className="object-contain"
