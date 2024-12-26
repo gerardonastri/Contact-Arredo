@@ -39,7 +39,7 @@ export const products = [
     name: "Exagres",
     category: "Pavimenti e Rivestimenti",
     url: "https://www.exagres.es",
-    img: "/loghi/logo-7.webp",
+    img: "/loghi/logo-7.png",
   },
   {
     name: "Flaviker",
@@ -63,7 +63,7 @@ export const products = [
     name: "Keradom",
     category: "Pavimenti e Rivestimenti",
     url: "https://www.keradom.it",
-    img: "/loghi/logo-11.svg",
+    img: "/loghi/logo-11.png",
   },
   {
     name: "Cerasarda",
@@ -159,7 +159,7 @@ export const products = [
     name: "PDP",
     category: "Box doccia",
     url: "https://www.pdpboxdoccia.com",
-    img: "/loghi/logo-26.svg",
+    img: "/loghi/logo-26.png",
   },
   {
     name: "Arblu'",
