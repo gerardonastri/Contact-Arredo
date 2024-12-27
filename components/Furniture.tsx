@@ -15,7 +15,7 @@ export const galleryItems: GalleryItem[] = [
     description:
       "Soluzioni d'arredo su misura per ambienti eleganti e funzionali",
     tag: "Georgeus Interior",
-    image: "/images/furniture.webp",
+    image: "/images/furniture-1.jpg",
   },
   {
     id: 2,
@@ -23,7 +23,7 @@ export const galleryItems: GalleryItem[] = [
     description:
       "Trasformiamo ogni spazio in un'opera d'arte con mobili raffinati ed esclusivi",
     tag: "Aesthetic",
-    image: "/images/furniture.webp",
+    image: "/images/furniture-2.jpg",
   },
   {
     id: 3,

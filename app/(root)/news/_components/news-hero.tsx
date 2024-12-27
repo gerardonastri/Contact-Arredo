@@ -16,7 +16,7 @@ export default function NewsHero() {
         <p className="text-gray-500 max-w-2xl mx-auto">
           Noi di Contact Arredo comprendiamo quanto sia importante rimanere
           aggiornati sulle ultime tendenze, sugli avvisi di mercato e sulle
-          intuizioni del mercato immobiliare di lusso.
+          intuizioni del mercato immobiliare.
         </p>
       </div>
 

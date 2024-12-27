@@ -1,76 +1,125 @@
-import { Coffee, Users, BookOpen, Briefcase } from "lucide-react";
+"use client";
+
+import { Coffee, Users2, HeartHandshake, GraduationCap } from "lucide-react";
+import { motion } from "framer-motion";
+import Image from "next/image";
+
+const features = [
+  {
+    title: "Consulenza",
+    description:
+      "Ascoltiamo le tue esigenze per creare soluzioni su misura, guidandoti in ogni fase del progetto",
+    icon: Coffee,
+    delay: 0.2,
+  },
+  {
+    title: "Collaborazione",
+    description:
+      "Lavoriamo fianco a fianco con i nostri clienti e partner per trasformare idee in realtà.",
+    icon: HeartHandshake,
+    delay: 0.4,
+  },
+  {
+    title: "Formazione",
+    description:
+      "Investiamo nel nostro team per garantire competenze sempre aggiornate e innovative.",
+    icon: GraduationCap,
+    delay: 0.6,
+  },
+  {
+    title: "Supporto",
+    description:
+      "Offriamo assistenza continua, anche dopo la realizzazione, per garantirti un'esperienza senza pensieri.",
+    icon: Users2,
+    delay: 0.8,
+  },
+];
 
 export default function Culture() {
   return (
     <div className="bg-[#C1A47B] lg:bg-transparent w-full mx-auto p-6 z-[2]">
-      <div className="flex flex-col lg:flex-row gap-8">
-        <p className="hidden lg:block mt-2 text-white">
-          Il nostro team con le nostre politiche
-        </p>
-        {/* Left Section */}
-        <div className="lg:w-1/2 lg:flex lg:flex-col lg:justify-between space-y-6">
-          <div>
-            <h2 className="text-4xl text-center lg:text-right font-glimerBold text-[#571A06]">
-              La nostra cultura
-            </h2>
-            <p className="mt-2 text-white text-center lg:text-right lg:max-w-[70%] ml-auto">
-              Crediamo che il nostro lavoro non si limiti alla creazione di
-              mobili e arredi, ma che sia un’opportunità per costruire relazioni
-              solide e durature con i nostri clienti e collaboratori.
-            </p>
-          </div>
-          <div className="aspect-video">
-            <img
-              src="/images/team.jpeg"
-              alt="Team consultation"
-              className="rounded-2xl w-full  object-cover"
-            />
-          </div>
-        </div>
+      <div className="container px-4 md:px-6">
+        <div className="grid gap-12 lg:gap-20 lg:grid-cols-2">
+          {/* Left Column - Text Content */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="flex flex-col justify-center space-y-8"
+          >
+            <div className="space-y-6">
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="text-[#571A06] text-4xl md:text-5xl lg:text-6xl font-light tracking-tight"
+              >
+                La nostra cultura
+              </motion.h2>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+                className="text-xl text-gray-200 md:text-2xl max-w-2xl"
+              >
+                Crediamo che il nostro lavoro non si limiti alla creazione di
+                mobili e arredi, ma che sia un&apos;opportunità per costruire
+                relazioni solide e durature con i nostri clienti e
+                collaboratori.
+              </motion.p>
+            </div>
 
-        {/* Right Section */}
-        <div className="lg:w-1/2 space-y-2">
-          <div className="aspect-video hidden lg:block">
-            <img
-              src="/images/team.jpeg"
-              alt="Team meeting"
-              className="rounded-2xl w-full h-[266px] object-cover"
-            />
-          </div>
-          <div className="grid grid-cols-2 gap-6">
-            {[
-              {
-                icon: Coffee,
-                title: "Consulenza",
-                text: "Ascoltiamo le tue esigenze per creare soluzioni su misura, guidandoti in ogni fase del progetto",
-              },
-              {
-                icon: Users,
-                title: "Collaborazione",
-                text: "Lavoriamo fianco a fianco con i nostri clienti e partner per trasformare idee in realtà.",
-              },
-              {
-                icon: BookOpen,
-                title: "Formazione",
-                text: "Investiamo nel nostro team per garantire competenze sempre aggiornate e innovative.",
-              },
-              {
-                icon: Briefcase,
-                title: "Supporto",
-                text: "Offriamo assistenza continua, anche dopo la realizzazione, per garantirti un'esperienza senza pensieri.",
-              },
-            ].map((item, index) => (
-              <div key={index} className="p-4 rounded-xl">
-                <div className="w-10 h-10 bg-[#571A06] rounded-full mb-1 flex items-center justify-center">
-                  <item.icon className="w-6 h-6 text-white" />
-                </div>
-                <h3 className="text-lg font-glimerBold text-[#571A06] mb-2">
-                  {item.title}
-                </h3>
-                <p className="text-sm text-white">{item.text}</p>
-              </div>
-            ))}
-          </div>
+            {/* Features Grid */}
+            <div className="grid gap-8 sm:grid-cols-2 py-10">
+              {features.map((feature) => (
+                <motion.div
+                  key={feature.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: feature.delay }}
+                  className="relative"
+                >
+                  <div className="absolute -left-2 -top-2 w-12 h-12 bg-[#571A06] rounded-2xl -z-10" />
+                  <div className="relative space-y-3">
+                    <div className="flex items-center space-x-3">
+                      <feature.icon className="w-6 h-6 text-white" />
+                      <h3 className="text-xl font-medium">{feature.title}</h3>
+                    </div>
+                    <p className="text-white leading-relaxed py-2">
+                      {feature.description}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Right Column - Image */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="relative lg:order-last"
+          >
+            <div className="relative aspect-square rounded-2xl overflow-hidden">
+              <Image
+                src="/images/team.jpeg"
+                alt="Team collaboration"
+                fill
+                className="object-cover"
+              />
+              {/* Decorative elements */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-gray-900/20 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-gray-900/40 to-transparent" />
+            </div>
+            {/* Floating decorative elements */}
+            <div className="absolute -right-4 -bottom-4 w-64 h-64 bg-gray-100 rounded-2xl -z-10" />
+            <div className="absolute -left-4 -top-4 w-32 h-32 bg-gray-200 rounded-xl -z-10" />
+          </motion.div>
         </div>
       </div>
     </div>

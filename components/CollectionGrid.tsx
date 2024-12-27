@@ -10,11 +10,10 @@ interface CardProps {
   item: {
     img: string;
     title: string;
-  }
+  };
 }
 
 const Card = ({ item }: CardProps) => {
-
   const controls = useAnimation();
   const ref = useRef(null);
   const inView = useInView(ref);
@@ -26,36 +25,36 @@ const Card = ({ item }: CardProps) => {
   }, [controls, inView]);
 
   return (
-  <motion.div
-  ref={ref}
-  initial={{ opacity: 0, y: 50 }}
-  animate={controls}
-  transition={{ duration: 0.5 }}
-  className="relative w-full mb-4 h-auto max-h-[550px] rounded-3xl overflow-hidden group cursor-pointer"
-  whileHover={{ scale: 1.02 }}
-  >
-    <Link href={`/products?q=${item.title}`}>
-    <img
-      src={item.img}
-      alt="grid col"
-      //   fill
-      className="object-cover w-full h-auto"
-    />
-    <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/0 to-black/60" />
-    <div className="absolute bottom-0 left-0 right-0 p-6 flex justify-between items-end">
-      <h2 className="text-2xl font-bold text-white">{item.title}</h2>
-      <motion.div
-        className="bg-white rounded-full p-2 opacity-0 group-hover:opacity-100"
-        whileHover={{ scale: 1.1 }}
-        transition={{ duration: 0.2 }}
-      >
-        <ArrowUpRight className="w-5 h-5" />
-      </motion.div>
-    </div>
-    </Link>
-  </motion.div>
-)
-}
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 50 }}
+      animate={controls}
+      transition={{ duration: 0.5 }}
+      className="relative w-full mb-4 h-auto max-h-[550px] rounded-3xl overflow-hidden group cursor-pointer"
+      whileHover={{ scale: 1.02 }}
+    >
+      <Link href={`/products?q=${item.title}`}>
+        <img
+          src={item.img}
+          alt="grid col"
+          //   fill
+          className="object-cover w-full h-auto"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/0 to-black/60" />
+        <div className="absolute bottom-0 left-0 right-0 p-6 flex justify-between items-end">
+          <h2 className="text-2xl font-bold text-white">{item.title}</h2>
+          <motion.div
+            className="bg-white rounded-full p-2 opacity-0 group-hover:opacity-100"
+            whileHover={{ scale: 1.1 }}
+            transition={{ duration: 0.2 }}
+          >
+            <ArrowUpRight className="w-5 h-5" />
+          </motion.div>
+        </div>
+      </Link>
+    </motion.div>
+  );
+};
 
 const CollectionGrid = () => {
   const controls = useAnimation();
@@ -69,29 +68,30 @@ const CollectionGrid = () => {
   }, [controls, inView]);
   const items = [
     {
-      img: "/images/grid/img-1.avif",
+      img: "/categories/cat-1.png",
       title: "Pavimenti e Rivestimenti",
     },
     {
-      img: "/images/grid/img-2.avif",
-      title: "Parquet"
-    }, 
-    {
-      img: "/images/grid/img-3.avif",
-      title: "Sanitari"
+      img: "/categories/cat-2.jpg",
+      title: "Parquet",
     },
     {
-      img: "/images/grid/img-4.avif",
-      title: "Arredo bagno"
+      img: "/categories/cat-3.jpg",
+      title: "Sanitari",
     },
     {
-      img: "/images/grid/img-5.jpg",
-      title: "Rubinetteria"
+      img: "/categories/cat-5.jpg",
+      title: "Rubinetteria",
     },
     {
-      img: "/images/grid/img-6.avif",
-      title: "Box doccia"
-    }
+      img: "/categories/cat-4.jpg",
+      title: "Arredo bagno",
+    },
+
+    {
+      img: "/categories/cat-6.jpg",
+      title: "Box doccia",
+    },
   ];
   const breakpointColumnsObj = {
     default: 3, // Numero di colonne di default
