@@ -6,7 +6,7 @@ import { ExternalLink, Grid, Layout, Box } from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { products } from "@/constants/products";
+import { products } from "@/content/products";
 // import { useSearchParams } from "next/navigation";
 
 const categories = [

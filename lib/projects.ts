@@ -10,12 +10,14 @@ export type Project = {
 export type ProjectMetadata = {
   title?: string;
   summary?: string;
-  image?: string;
+  image1?: string;
+  image2?: string;
+  image3?: string;
   publishedAt?: string;
   slug: string;
 };
 
-const rootDirectory = path.join(process.cwd(), "content", "project");
+const rootDirectory = path.join(process.cwd(), "content", "projects");
 
 export async function getProjectBySlug(slug: string): Promise<Project | null> {
   try {

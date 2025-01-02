@@ -2,18 +2,178 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 222 47% 11%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222 47% 11%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222 47% 11%;
+    --radius: 0.75rem;
+
+    /* Enhanced chart colors for better visibility */
+    --chart-1: 222 47% 50%;
+    --chart-2: 155 47% 50%;
+    --chart-3: 280 47% 50%;
+    --chart-4: 330 47% 50%;
+    --chart-5: 45 47% 50%;
+
+    /* Refined syntax highlighting colors */
+    --sh-identifier: #2a3f5f;
+    --sh-keyword: #d73a49;
+    --sh-string: #22863a;
+    --sh-class: #6f42c1;
+    --sh-property: #005cc5;
+    --sh-entity: #24292e;
+    --sh-jsxliterals: #6f42c1;
+    --sh-sign: #24292e;
+    --sh-comment: #6a737d;
+  }
+
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222 47% 11%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Enhanced Typography */
+  .title {
+    @apply font-serif text-4xl font-bold tracking-tight;
+    @apply bg-gradient-to-r from-primary to-primary bg-clip-text text-transparent;
+    @apply mb-4 leading-tight;
+    @apply text-center;
+  }
+
+  /* Improved Article Layout */
+  .prose {
+    @apply max-w-[95ch] mx-auto leading-relaxed;
+  }
+
+  .prose h2 {
+    @apply text-2xl font-semibold mt-8 mb-4 tracking-tight;
+  }
+
+  .prose h3 {
+    @apply text-xl font-medium mt-6 mb-3;
+  }
+
+  .prose p {
+    @apply mb-6 text-base text-muted-foreground;
+  }
+
+  /* Enhanced Code Blocks */
+  .prose pre {
+    @apply my-6 overflow-x-auto rounded-xl bg-secondary;
+    @apply border border-border shadow-sm;
+    @apply p-4 text-sm leading-relaxed;
+  }
+
+  .prose code {
+    @apply rounded-md bg-secondary px-1.5 py-0.5 text-sm font-medium;
+    @apply text-foreground;
+  }
+
+  .prose pre code {
+    @apply bg-transparent p-0 text-foreground;
+    font-feature-settings: "rlig" 0, "calt" 0;
+  }
+
+  /* Meta Information */
+  .meta {
+    @apply flex items-center gap-2 text-sm text-muted-foreground;
+    @apply mb-8 font-medium;
+  }
+
+  /* List Styling */
+  .prose ul {
+    @apply my-6 list-disc list-inside space-y-2;
+  }
+
+  .prose li {
+    @apply text-muted-foreground;
+  }
+
+  /* Link Styling */
+  .prose a {
+    @apply text-primary underline decoration-primary underline-offset-4;
+    @apply transition-colors duration-200;
+    @apply hover:text-primary/90;
+  }
+
+  /* Blockquote Styling */
+  .prose blockquote {
+    @apply border-l-4 border-primary pl-4 italic;
+    @apply my-6 text-muted-foreground;
+  }
+
+  /* Table Styling */
+  .prose table {
+    @apply w-full border-collapse border border-border;
+    @apply my-6 text-sm;
+  }
+
+  .prose th {
+    @apply bg-secondary px-4 py-2 text-left font-medium;
+  }
+
+  .prose td {
+    @apply border-t border-border px-4 py-2;
+  }
+
+  /* Image Styling */
+  .prose img {
+    @apply rounded-xl shadow-sm my-6;
+    @apply border border-border;
+  }
+}
+
 body {
   /* font-family: "Poppins", sans-serif; */
   font-family: var(--font-gilmer), sans-serif;
   transition-property: opacity, background, transform, filter;
   transition-timing-function: ease-in-out;
   transition-duration: 300ms;
-}
-
-@layer base {
-  :root {
-    --radius: 0.5rem;
-  }
 }
 .my-masonry-grid {
   display: flex;
