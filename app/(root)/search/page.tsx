@@ -1,89 +1,126 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Calendar, MapPin, Tag } from "lucide-react";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-// import {
-//   Pagination,
-//   PaginationContent,
-//   PaginationEllipsis,
-//   PaginationItem,
-//   PaginationLink,
-//   PaginationNext,
-//   PaginationPrevious,
-// } from "@/components/ui/pagination";
 import Image from "next/image";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
+import { NewsMetadata } from "@/lib/news";
+import { projects } from "@/content/projects";
+import { products } from "@/content/products";
+import { formatDate } from "@/lib/utils";
+import { getNews } from "@/lib/action";
 
 // Mock data for demonstration
-const mockResults = {
-  news: [
-    {
-      id: 1,
-      title: "The Future of Sustainable Design",
-      date: "2024-03-15",
-      image: "/images/furniture.webp",
-    },
-    {
-      id: 2,
-      title: "Innovative Materials in Modern Architecture",
-      date: "2024-03-10",
-      image: "/images/grid/img-1.avif",
-    },
-    {
-      id: 3,
-      title: "Emerging Trends in Interior Design",
-      date: "2024-03-05",
-      image: "/images/grid/img-2.avif",
-    },
-  ],
-  projects: [
-    {
-      id: 1,
-      title: "Eco-Friendly Urban Loft",
-      location: "Milan, Italy",
-      image: "/images/grid/img-3.avif",
-    },
-    {
-      id: 2,
-      title: "Minimalist Coastal Retreat",
-      location: "Amalfi Coast, Italy",
-      image: "/images/furniture.webp",
-    },
-    {
-      id: 3,
-      title: "Rustic Mountain Chalet",
-      location: "Alps, Switzerland",
-      image: "/images/grid/img-4.avif",
-    },
-  ],
-  products: [
-    {
-      id: 1,
-      title: "Ergonomic Lounge Chair",
-      price: "€1,299",
-      image: "/images/furniture.webp",
-    },
-    {
-      id: 2,
-      title: "Modular Shelving System",
-      price: "€899",
-      image: "/images/grid/img-5.jpg",
-    },
-    {
-      id: 3,
-      title: "Smart Home Lighting Kit",
-      price: "€249",
-      image: "/images/grid/img-6.avif",
-    },
-  ],
+// const mockResults = {
+//   news: [
+//     {
+//       id: 1,
+//       title: "The Future of Sustainable Design",
+//       date: "2024-03-15",
+//       image: "/images/furniture.webp",
+//     },
+//     {
+//       id: 2,
+//       title: "Innovative Materials in Modern Architecture",
+//       date: "2024-03-10",
+//       image: "/images/grid/img-1.avif",
+//     },
+//     {
+//       id: 3,
+//       title: "Emerging Trends in Interior Design",
+//       date: "2024-03-05",
+//       image: "/images/grid/img-2.avif",
+//     },
+//   ],
+//   projects: [
+//     {
+//       id: 1,
+//       title: "Eco-Friendly Urban Loft",
+//       location: "Milan, Italy",
+//       image: "/images/grid/img-3.avif",
+//     },
+//     {
+//       id: 2,
+//       title: "Minimalist Coastal Retreat",
+//       location: "Amalfi Coast, Italy",
+//       image: "/images/furniture.webp",
+//     },
+//     {
+//       id: 3,
+//       title: "Rustic Mountain Chalet",
+//       location: "Alps, Switzerland",
+//       image: "/images/grid/img-4.avif",
+//     },
+//   ],
+//   products: [
+//     {
+//       id: 1,
+//       title: "Ergonomic Lounge Chair",
+//       price: "€1,299",
+//       image: "/images/furniture.webp",
+//     },
+//     {
+//       id: 2,
+//       title: "Modular Shelving System",
+//       price: "€899",
+//       image: "/images/grid/img-5.jpg",
+//     },
+//     {
+//       id: 3,
+//       title: "Smart Home Lighting Kit",
+//       price: "€249",
+//       image: "/images/grid/img-6.avif",
+//     },
+//   ],
+// };
+
+type Project = {
+  id: number;
+  title: string;
+  image: string;
+  description: string;
+};
+
+type Product = {
+  title: string;
+  category: string;
+  url: string;
+  image: string;
+};
+
+type SearchResults = {
+  news: NewsMetadata[];
+  projects: Project[];
+  products: Product[];
 };
 
 export default function SearchResults() {
   const [activeTab, setActiveTab] = useState("all");
-  const searchQuery = "Modern Design"; // This would typically come from a query parameter or state
+
+  const searchParams = useSearchParams();
+  const searchQuery = searchParams.get("query");
+
+  //results
+  const [results, setResults] = useState<SearchResults | null>(null);
+  useEffect(() => {
+    if (searchQuery) {
+      const getResults = async () => {
+        const news = await getNews(searchQuery);
+        const projectsRes = projects.filter((project) =>
+          project.title.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+        const productsRes = products.filter((product) =>
+          product.title.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+        setResults({ news, projects: projectsRes, products: productsRes });
+      };
+      getResults();
+    }
+  }, [activeTab]);
 
   return (
     <div className="container mx-auto px-4 py-12">
@@ -91,42 +128,44 @@ export default function SearchResults() {
         Search Results for &quot;{searchQuery}&quot;
       </h1>
 
-      <Tabs value={activeTab} onValueChange={setActiveTab} className="mb-12">
-        <TabsList className="grid w-full grid-cols-4 mb-8">
-          <TabsTrigger value="all">All</TabsTrigger>
-          <TabsTrigger value="news">News</TabsTrigger>
-          <TabsTrigger value="projects">Projects</TabsTrigger>
-          <TabsTrigger value="products">Products</TabsTrigger>
-        </TabsList>
-        <TabsContent value="all">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {Object.entries(mockResults).flatMap(([category, items]) =>
-              items.map((item, index) => (
-                <ResultCard
-                  key={`${category}-${item.id}`}
-                  item={item}
-                  category={category}
-                  index={index}
-                />
-              ))
-            )}
-          </div>
-        </TabsContent>
-        {Object.entries(mockResults).map(([category, items]) => (
-          <TabsContent key={category} value={category}>
+      {results && (
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="mb-12">
+          <TabsList className="grid w-full grid-cols-4 mb-8">
+            <TabsTrigger value="all">All</TabsTrigger>
+            <TabsTrigger value="news">News</TabsTrigger>
+            <TabsTrigger value="projects">Projects</TabsTrigger>
+            <TabsTrigger value="products">Products</TabsTrigger>
+          </TabsList>
+          <TabsContent value="all">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {items.map((item, index) => (
-                <ResultCard
-                  key={item.id}
-                  item={item}
-                  category={category}
-                  index={index}
-                />
-              ))}
+              {Object.entries(results).flatMap(([category, items]) =>
+                items.map((item, index) => (
+                  <ResultCard
+                    key={`${category}-${index}`}
+                    item={item}
+                    category={category}
+                    index={index}
+                  />
+                ))
+              )}
             </div>
           </TabsContent>
-        ))}
-      </Tabs>
+          {Object.entries(results).map(([category, items]) => (
+            <TabsContent key={category} value={category}>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {items.map((item, index) => (
+                  <ResultCard
+                    key={index}
+                    item={item}
+                    category={category}
+                    index={index}
+                  />
+                ))}
+              </div>
+            </TabsContent>
+          ))}
+        </Tabs>
+      )}
 
       {/* <Pagination>
         <PaginationContent>
@@ -161,18 +200,12 @@ function ResultCard({
   category,
   index,
 }: {
-  item: {
-    id: number;
-    image: string;
-    date?: string;
-    title: string;
-    location?: string;
-    price?: string;
-  };
+  item: NewsMetadata | Project | Product;
   category: string;
   index: number;
 }) {
   const MotionCard = motion(Card);
+
   return (
     <MotionCard
       initial={{ opacity: 0, y: 20 }}
@@ -182,8 +215,8 @@ function ResultCard({
     >
       <div className="relative h-64 overflow-hidden">
         <Image
-          src={item.image}
-          alt={item.title}
+          src={item.image || ""}
+          alt={item.title || ""}
           layout="fill"
           objectFit="cover"
           className="transition-transform duration-300 group-hover:scale-110"
@@ -201,27 +234,36 @@ function ResultCard({
             <>
               <Calendar className="h-4 w-4 mr-2" />
               <span className="text-sm">
-                {item.date && new Date(item.date).toLocaleDateString()}
+                {(item as NewsMetadata).publishedAt &&
+                  formatDate((item as NewsMetadata).publishedAt ?? "")}
               </span>
             </>
           )}
           {category === "projects" && (
             <>
               <MapPin className="h-4 w-4 mr-2" />
-              <span className="text-sm">{item.location}</span>
+              {/* <span className="text-sm">{(item as Project).location}</span> */}
             </>
           )}
           {category === "products" && (
             <>
               <Tag className="h-4 w-4 mr-2" />
-              <span className="text-sm font-bold">{item.price}</span>
+              <span className="text-sm font-bold">
+                {/* {(item as Product).price} */}
+              </span>
             </>
           )}
         </div>
       </CardContent>
       <CardFooter className="px-6 py-4 bg-gray-50">
         <Link
-          href={`/${category}/${item.id}`}
+          href={
+            category === "products"
+              ? (item as Product).url
+              : category === "news"
+              ? `/${category}/${(item as NewsMetadata).slug}`
+              : `/${category}/${(item as Project).id}`
+          }
           className="text-blue-600 hover:text-blue-800 transition-colors text-sm font-medium"
         >
           View {category.slice(0, -1)} details

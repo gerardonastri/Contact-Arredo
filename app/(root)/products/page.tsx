@@ -125,7 +125,7 @@ export default function Page() {
         >
           {filteredProducts.map((product, index) => (
             <motion.div
-              key={`${product.name}-${index}`}
+              key={`${product.title}-${index}`}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.05 }}
@@ -176,8 +176,8 @@ export default function Page() {
                       >
                         <div className="absolute inset-0 flex items-center justify-center p-6">
                           <Image
-                            src={product.img}
-                            alt={`${product.name} logo`}
+                            src={product.image}
+                            alt={`${product.title} logo`}
                             fill
                             className={`object-contain transition-opacity duration-300 ${"opacity-100"}`}
                           />
@@ -196,7 +196,7 @@ export default function Page() {
                         className="text-center space-y-3"
                       >
                         <h3 className="text-xl font-medium text-gray-900 group-hover:text-blue-600 transition-colors">
-                          {product.name}
+                          {product.title}
                         </h3>
                         <p className="text-sm text-gray-600 font-light">
                           {product.category}

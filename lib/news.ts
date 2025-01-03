@@ -33,6 +33,27 @@ export async function getNewsBySlug(slug: string): Promise<News | null> {
   }
 }
 
+export async function getNewsByTitle(title: string): Promise<NewsMetadata[]> {
+  const files = fs.readdirSync(rootDirectory); // Legge tutti i file nella directory delle news
+
+  // Filtra le news in base al titolo
+  const filteredNews = files
+    .map((file) => getNewsMetadata(file)) // Ottieni i metadati di ogni news
+    .filter(
+      (news) => news.title?.toLowerCase().includes(title.toLowerCase()) // Controlla se il titolo contiene la stringa passata
+    )
+    .sort((a, b) => {
+      // Ordina per data di pubblicazione
+      if (new Date(a.publishedAt ?? "") < new Date(b.publishedAt ?? "")) {
+        return 1;
+      } else {
+        return -1;
+      }
+    });
+
+  return filteredNews; // Ritorna solo le news filtrate
+}
+
 //prende un limite per quanti News prendere
 export async function getNews(limit?: number): Promise<NewsMetadata[]> {
   const files = fs.readdirSync(rootDirectory); //legge il contenuto della root directory (i Newss)
