@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Calendar, MapPin, Tag } from "lucide-react";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
@@ -98,7 +98,7 @@ type SearchResults = {
   products: Product[];
 };
 
-export default function SearchResults() {
+function SearchPage() {
   const [activeTab, setActiveTab] = useState("all");
 
   const searchParams = useSearchParams();
@@ -271,4 +271,10 @@ function ResultCard({
       </CardFooter>
     </MotionCard>
   );
+}
+
+export default function Page() {
+  <Suspense>
+    <SearchPage />
+  </Suspense>;
 }
