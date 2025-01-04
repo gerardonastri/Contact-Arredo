@@ -274,7 +274,9 @@ function ResultCard({
 }
 
 export default function Page() {
-  <Suspense>
-    <SearchPage />
-  </Suspense>;
+  return (
+    <Suspense>
+      <SearchPage />
+    </Suspense>
+  );
 }
