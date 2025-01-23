@@ -27,7 +27,7 @@ const contactInfo = [
     content: "Via Nazionale, 247 Nocera Superiore (SA)",
   },
   { icon: Mail, title: "Email", content: "contact.arredo@virgilio.it" },
-  { icon: Phone, title: "Phone", content: "+39 081 3650706" },
+  { icon: Phone, title: "Phone", content: "+39 3881009344" },
   {
     icon: Clock,
     title: "Working Hours",

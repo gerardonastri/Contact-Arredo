@@ -67,7 +67,7 @@ export default function Navbar2() {
                 className="text-sm hover:text-gray-600 transition-colors"
                 onClick={handleLinkClick}
               >
-                Products
+                Our Brands
               </TransitionLink>
               <TransitionLink
                 href="/about"
@@ -76,13 +76,13 @@ export default function Navbar2() {
               >
                 About
               </TransitionLink>
-              <TransitionLink
+              {/* <TransitionLink
                 href="/news"
                 className="text-sm hover:text-gray-600 transition-colors"
                 onClick={handleLinkClick}
               >
                 News
-              </TransitionLink>
+              </TransitionLink> */}
               <TransitionLink
                 href="/projects"
                 className="text-sm hover:text-gray-600 transition-colors"
@@ -113,7 +113,7 @@ export default function Navbar2() {
             href="/products"
             className="text-sm hover:text-gray-600 transition-colors"
           >
-            Products
+            Our Brands
           </TransitionLink>
           <TransitionLink
             href="/about"
@@ -121,12 +121,12 @@ export default function Navbar2() {
           >
             About
           </TransitionLink>
-          <TransitionLink
+          {/* <TransitionLink
             href="/news"
             className="text-sm hover:text-gray-600 transition-colors"
           >
             News
-          </TransitionLink>
+          </TransitionLink> */}
           <TransitionLink
             href="/projects"
             className="text-sm hover:text-gray-600 transition-colors"

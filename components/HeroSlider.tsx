@@ -112,14 +112,14 @@ function HeroSlider({
                 >
                   {slides[currentIndex].title}
                 </motion.h1>
-                <motion.p
+                {/* <motion.p
                   initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ delay: 0.5, duration: 0.8 }}
                   className="max-w-[80%] md:max-w-[100%] mx-auto text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-white/90"
                 >
                   {slides[currentIndex].description}
-                </motion.p>
+                </motion.p> */}
               </div>
             </div>
           </motion.div>

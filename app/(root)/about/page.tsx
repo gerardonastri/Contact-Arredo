@@ -10,20 +10,22 @@ const About = () => {
       <div className="px-[3rem] max-w-[1700px] mx-auto">
         <h2 className="text-3xl md:text-6xl font-glimerBold">
           Contact arredo,{" "}
-          <span className="text-brown">
+          <span className="text-[#213D75]">
             ti <br className="hidden md:inline-block py-2" />
             aiutiamo
           </span>{" "}
           a costruire il <br className="hidden md:inline-block" />
           tuo sogno
         </h2>
-        <Button className="bg-[#571A06] text-white mt-5">
-          Guarda il catalogo
+        <Button className="bg-[#213D75] text-white mt-5">
+          <a href="/products">
+            Guarda il catalogo
+          </a>
         </Button>
       </div>
       <div className="relative hidden lg:block">
         <img
-          src="/images/about.png"
+          src="/images/about-2.png"
           className="w-full h-[1200px] -mt-16 absolute top-0 left-0 z-0"
           alt=""
         />

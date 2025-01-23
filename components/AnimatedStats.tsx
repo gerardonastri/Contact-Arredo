@@ -34,10 +34,10 @@ function Counter({ value, duration = 2 }: CounterProps) {
 
 export default function AnimatedStats() {
   const stats = [
-    { value: 500, label: "Prodotti", suffix: "+" },
+    { value: 30, label: "Aziende Partner", suffix: "" },
     { value: 20, label: "Progetti", suffix: "+" },
     { value: 50, label: "Clienti Soddisfatti", suffix: "+" },
-    { value: "40", label: "TAnni di esperienza", suffix: "+" },
+    { value: "25", label: "Anni di esperienza", suffix: "+" },
   ];
 
   const ref = useRef(null);
@@ -60,7 +60,7 @@ export default function AnimatedStats() {
             transition={{ duration: 0.6, delay: index * 0.2 }}
             className="text-center"
           >
-            <div className="text-4xl md:text-5xl lg:text-6xl font-glimerBold mb-2">
+            <div className="text-4xl md:text-5xl lg:text-6xl text-[#B8B4AC] font-glimerBold mb-2">
               {typeof stat.value === "number" ? (
                 <>
                   <Counter value={stat.value} />

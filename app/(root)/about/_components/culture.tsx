@@ -53,7 +53,7 @@ export default function Culture() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="text-[#571A06] text-4xl md:text-5xl lg:text-6xl font-light tracking-tight"
+                className="text-[#E4EDFF] text-4xl md:text-5xl lg:text-6xl font-light tracking-tight"
               >
                 La nostra cultura
               </motion.h2>
@@ -82,13 +82,13 @@ export default function Culture() {
                   transition={{ delay: feature.delay }}
                   className="relative"
                 >
-                  <div className="absolute -left-2 -top-2 w-12 h-12 bg-[#571A06] rounded-2xl -z-10" />
+                  <div className="absolute -left-2 -top-2 w-12 h-12 bg-[#4A69A6] rounded-2xl -z-10" />
                   <div className="relative space-y-3">
                     <div className="flex items-center space-x-3">
-                      <feature.icon className="w-6 h-6 text-white" />
-                      <h3 className="text-xl font-medium">{feature.title}</h3>
+                      <feature.icon className="w-6 h-6 text-[#E4EDFF]" />
+                      <h3 className="text-xl text-[#E4EDFF] font-medium">{feature.title}</h3>
                     </div>
-                    <p className="text-white leading-relaxed py-2">
+                    <p className="text-white/80 leading-relaxed py-2">
                       {feature.description}
                     </p>
                   </div>
@@ -117,8 +117,8 @@ export default function Culture() {
               <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-gray-900/40 to-transparent" />
             </div>
             {/* Floating decorative elements */}
-            <div className="absolute -right-4 -bottom-4 w-64 h-64 bg-gray-100 rounded-2xl -z-10" />
-            <div className="absolute -left-4 -top-4 w-32 h-32 bg-gray-200 rounded-xl -z-10" />
+            <div className="absolute -right-4 -bottom-4 w-64 h-64 bg-[#E4EDFF] rounded-2xl -z-10" />
+            <div className="absolute -left-4 -top-4 w-32 h-32 bg-[#E4EDFF] rounded-xl -z-10" />
           </motion.div>
         </div>
       </div>

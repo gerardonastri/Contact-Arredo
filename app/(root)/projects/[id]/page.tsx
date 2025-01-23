@@ -55,7 +55,7 @@ export default function SingleProjectPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-5xl md:text-7xl font-light mb-8"
+          className="text-5xl md:text-7xl text-[#B8B4AC] font-light mb-8"
         >
           {project.title}
         </motion.h1>
@@ -74,7 +74,7 @@ export default function SingleProjectPage() {
                 fill
                 className="object-cover rounded-lg"
               />
-              <div className="absolute bottom-4 left-4 bg-black bg-opacity-70 px-3 py-1 rounded">
+              <div className="absolute bottom-4 left-4 bg-[#4A69A6] bg-opacity-70 px-3 py-1 rounded">
                 <span className="text-sm font-light capitalize text-white">
                   {stage}
                 </span>
@@ -89,9 +89,9 @@ export default function SingleProjectPage() {
           transition={{ duration: 0.5, delay: 0.4 }}
           className="mb-16"
         >
-          <h2 className="text-3xl font-light mb-4">Project Overview</h2>
+          <h2 className="text-3xl font-light mb-4 text-[#B8B4AC]">Project Overview</h2>
           <p className="text-gray-400 mb-8">{project.description}</p>
-          <h3 className="text-2xl font-light mb-4">Key Features</h3>
+          <h3 className="text-2xl font-light mb-4 text-[#B8B4AC]">Key Features</h3>
           <ul className="list-disc list-inside text-gray-400">
             {project.details.map((detail, index) => (
               <li key={index}>{detail}</li>
@@ -105,7 +105,7 @@ export default function SingleProjectPage() {
           transition={{ duration: 0.5, delay: 0.6 }}
           className="mb-16"
         >
-          <h2 className="text-3xl font-light mb-8">Client Reviews</h2>
+          <h2 className="text-3xl font-light mb-8 text-[#B8B4AC]">Client Reviews</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {project.reviews.map((review) => (
               <div key={review.id} className="bg-gray-900 p-6 rounded-lg">

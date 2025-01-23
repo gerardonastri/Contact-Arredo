@@ -2,17 +2,14 @@
 
 import { Suspense, useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Calendar, MapPin, Tag } from "lucide-react";
+import { ArrowRight, MapPin, Tag } from "lucide-react";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { NewsMetadata } from "@/lib/news";
 import { projects } from "@/content/projects";
 import { products } from "@/content/products";
-import { formatDate } from "@/lib/utils";
-import { getNews } from "@/lib/action";
 
 // Mock data for demonstration
 // const mockResults = {
@@ -93,7 +90,6 @@ type Product = {
 };
 
 type SearchResults = {
-  news: NewsMetadata[];
   projects: Project[];
   products: Product[];
 };
@@ -109,14 +105,13 @@ function SearchPage() {
   useEffect(() => {
     if (searchQuery) {
       const getResults = async () => {
-        const news = await getNews(searchQuery);
         const projectsRes = projects.filter((project) =>
           project.title.toLowerCase().includes(searchQuery.toLowerCase())
         );
         const productsRes = products.filter((product) =>
           product.title.toLowerCase().includes(searchQuery.toLowerCase())
         );
-        setResults({ news, projects: projectsRes, products: productsRes });
+        setResults({projects: projectsRes, products: productsRes });
       };
       getResults();
     }
@@ -130,9 +125,8 @@ function SearchPage() {
 
       {results && (
         <Tabs value={activeTab} onValueChange={setActiveTab} className="mb-12">
-          <TabsList className="grid w-full grid-cols-4 mb-8">
+          <TabsList className="grid w-full grid-cols-3 mb-8">
             <TabsTrigger value="all">All</TabsTrigger>
-            <TabsTrigger value="news">News</TabsTrigger>
             <TabsTrigger value="projects">Projects</TabsTrigger>
             <TabsTrigger value="products">Products</TabsTrigger>
           </TabsList>
@@ -200,7 +194,7 @@ function ResultCard({
   category,
   index,
 }: {
-  item: NewsMetadata | Project | Product;
+  item: | Project | Product;
   category: string;
   index: number;
 }) {
@@ -230,15 +224,6 @@ function ResultCard({
           {item.title}
         </h3>
         <div className="flex items-center text-gray-600 mb-2">
-          {category === "news" && (
-            <>
-              <Calendar className="h-4 w-4 mr-2" />
-              <span className="text-sm">
-                {(item as NewsMetadata).publishedAt &&
-                  formatDate((item as NewsMetadata).publishedAt ?? "")}
-              </span>
-            </>
-          )}
           {category === "projects" && (
             <>
               <MapPin className="h-4 w-4 mr-2" />
@@ -260,8 +245,6 @@ function ResultCard({
           href={
             category === "products"
               ? (item as Product).url
-              : category === "news"
-              ? `/${category}/${(item as NewsMetadata).slug}`
               : `/${category}/${(item as Project).id}`
           }
           className="text-blue-600 hover:text-blue-800 transition-colors text-sm font-medium"

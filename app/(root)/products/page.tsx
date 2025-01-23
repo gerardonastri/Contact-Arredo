@@ -72,10 +72,10 @@ export default function Page() {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-16"
         >
-          <h1 className="text-5xl md:text-7xl font-light mb-6">
+          <h1 className="text-5xl text-[#B8B4AC] md:text-7xl font-light mb-6">
             I Nostri Prodotti
           </h1>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-[#808285] max-w-2xl mx-auto">
             Scopri la nostra selezione di prodotti dei migliori marchi italiani
             e internazionali
           </p>
@@ -92,26 +92,23 @@ export default function Page() {
               const Icon = category.icon;
               return (
                 <Button
-                  key={category.id}
-                  variant={
-                    activeCategory === category.name ? "default" : "outline"
-                  }
-                  onClick={() => setActiveCategory(category.name)}
-                  className="relative group px-4 py-2"
-                >
-                  <motion.div
-                    initial={false}
-                    animate={{
-                      backgroundColor:
-                        activeCategory === category.name
-                          ? "rgb(var(--primary))"
-                          : "transparent",
-                    }}
-                    className="absolute inset-0 rounded-md opacity-10"
-                  />
-                  <Icon className="w-4 h-4 mr-2 inline-block" />
+                key={category.id}
+                variant={activeCategory === category.name ? "default" : "outline"}
+                onClick={() => setActiveCategory(category.name)}
+                className="relative group px-4 py-2"
+              >
+                <motion.div
+                  initial={false}
+                  animate={{
+                    backgroundColor: activeCategory === category.name ? "#213D75" : "transparent",
+                  }}
+                  className="absolute inset-0 rounded-md opacity-100"
+                />
+                <div className="relative z-10 flex items-center">
+                  <Icon className="w-4 h-4 mr-2" />
                   <span>{category.name}</span>
-                </Button>
+                </div>
+              </Button>
               );
             })}
           </div>
@@ -195,14 +192,14 @@ export default function Page() {
                         whileHover={{ opacity: 1 }}
                         className="text-center space-y-3"
                       >
-                        <h3 className="text-xl font-medium text-gray-900 group-hover:text-blue-600 transition-colors">
+                        <h3 className="text-xl font-medium text-gray-900 group-hover:text-[#213D75] transition-colors">
                           {product.title}
                         </h3>
-                        <p className="text-sm text-gray-600 font-light">
+                        <p className="text-sm text-[#808285] font-light">
                           {product.category}
                         </p>
                         <motion.div
-                          className="flex justify-center items-center gap-2 text-sm text-gray-600 group-hover:text-blue-600 transition-colors"
+                          className="flex justify-center items-center gap-2 text-sm text-gray-600 group-hover:text-[#213D75] transition-colors"
                           whileHover={{ x: 5 }}
                           transition={{
                             type: "spring",
