@@ -25,7 +25,7 @@ const About = () => {
       </div>
       <div className="relative hidden lg:block">
         <img
-          src="/images/about-2.png"
+          src="/images/about.svg"
           className="w-full h-[1200px] -mt-16 absolute top-0 left-0 z-0"
           alt=""
         />
