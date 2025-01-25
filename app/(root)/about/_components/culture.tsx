@@ -37,7 +37,7 @@ const features = [
 
 export default function Culture() {
   return (
-    <div className="bg-[#C1A47B] lg:bg-transparent w-full mx-auto p-6 z-[2]">
+    <div className="bg-[#213D75] lg:bg-transparent w-full mx-auto p-6 z-[2]">
       <div className="container px-4 md:px-6">
         <div className="grid gap-12 lg:gap-20 lg:grid-cols-2">
           {/* Left Column - Text Content */}
@@ -86,7 +86,9 @@ export default function Culture() {
                   <div className="relative space-y-3">
                     <div className="flex items-center space-x-3">
                       <feature.icon className="w-6 h-6 text-[#E4EDFF]" />
-                      <h3 className="text-xl text-[#E4EDFF] font-medium">{feature.title}</h3>
+                      <h3 className="text-xl text-[#E4EDFF] font-medium">
+                        {feature.title}
+                      </h3>
                     </div>
                     <p className="text-white/80 leading-relaxed py-2">
                       {feature.description}

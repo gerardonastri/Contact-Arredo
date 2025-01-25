@@ -18,14 +18,12 @@ const About = () => {
           tuo sogno
         </h2>
         <Button className="bg-[#213D75] text-white mt-5">
-          <a href="/products">
-            Guarda il catalogo
-          </a>
+          <a href="/products">Guarda il catalogo</a>
         </Button>
       </div>
       <div className="relative hidden lg:block">
         <img
-          src="/images/about.svg"
+          src="/images/about.png"
           className="w-full h-[1200px] -mt-16 absolute top-0 left-0 z-0"
           alt=""
         />

@@ -28,7 +28,7 @@ export default function Navbar2() {
 
   const handleSearch = () => {
     // e.preventDefault();
-    setIsOpen(false)
+    setIsOpen(false);
     // Add your search logic here
   };
 
@@ -63,18 +63,18 @@ export default function Navbar2() {
           >
             <nav className="flex flex-col gap-4">
               <TransitionLink
-                href="/products"
-                className="text-sm hover:text-gray-600 transition-colors"
-                onClick={handleLinkClick}
-              >
-                Our Brands
-              </TransitionLink>
-              <TransitionLink
                 href="/about"
                 className="text-sm hover:text-gray-600 transition-colors"
                 onClick={handleLinkClick}
               >
                 About
+              </TransitionLink>
+              <TransitionLink
+                href="/products"
+                className="text-sm hover:text-gray-600 transition-colors"
+                onClick={handleLinkClick}
+              >
+                Our Brands
               </TransitionLink>
               {/* <TransitionLink
                 href="/news"
@@ -90,7 +90,12 @@ export default function Navbar2() {
               >
                 Projects
               </TransitionLink>
-              <Form scroll={false} action="/search" onSubmit={handleSearch} className="mt-4">
+              <Form
+                scroll={false}
+                action="/search"
+                onSubmit={handleSearch}
+                className="mt-4"
+              >
                 <div className="relative">
                   <Input
                     name="query"
@@ -98,7 +103,10 @@ export default function Navbar2() {
                     placeholder="Search..."
                     className="w-full pl-10 pr-4 py-2 text-sm text-gray-900 bg-gray-100 rounded-md focus:outline-none focus:bg-white focus:ring-2 focus:ring-black"
                   />
-                  <button type="submit" className="absolute inset-y-0 left-0 flex items-center pl-3">
+                  <button
+                    type="submit"
+                    className="absolute inset-y-0 left-0 flex items-center pl-3"
+                  >
                     <Search className="h-5 w-5 text-gray-400" />
                   </button>
                 </div>
@@ -110,17 +118,18 @@ export default function Navbar2() {
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-6">
           <TransitionLink
-            href="/products"
-            className="text-sm hover:text-gray-600 transition-colors"
-          >
-            Our Brands
-          </TransitionLink>
-          <TransitionLink
             href="/about"
             className="text-sm hover:text-gray-600 transition-colors"
           >
             About
           </TransitionLink>
+          <TransitionLink
+            href="/products"
+            className="text-sm hover:text-gray-600 transition-colors"
+          >
+            Our Brands
+          </TransitionLink>
+
           {/* <TransitionLink
             href="/news"
             className="text-sm hover:text-gray-600 transition-colors"
