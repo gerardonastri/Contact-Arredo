@@ -1,79 +1,78 @@
 "use client";
 
-import * as React from "react";
-import { motion, useAnimationFrame } from "framer-motion";
-import { wrap } from "@motionone/utils";
-import { cn } from "@/lib/utils";
+import { useRef } from "react";
+import Image from "next/image";
+import {
+  motion,
+  useAnimationFrame,
+  useMotionValue,
+  useSpring,
+  useTransform,
+} from "framer-motion";
 
 const images = [
-  "/images/team.jpeg",
-  "/images/team.jpeg",
-  "/images/team.jpeg",
-  "/images/team.jpeg",
+  "/categories/cat-1.png",
+  "/categories/cat-2.jpg",
+  "/categories/cat-3.jpg",
+  "/categories/cat-4.jpg",
+  "/categories/cat-5.jpg",
+  "/categories/cat-6.jpg",
+  "/categories/cat-1.png",
+  "/categories/cat-2.jpg",
+  "/categories/cat-3.jpg",
+  "/categories/cat-4.jpg",
+  "/categories/cat-5.jpg",
+  "/categories/cat-6.jpg",
 ];
 
-export default function Carousel() {
-  const [loopImages, setLoopImages] = React.useState(images);
-  const carouselRef = React.useRef<HTMLDivElement>(null);
-  const [carouselWidth, setCarouselWidth] = React.useState(0);
-  const [scrollX, setScrollX] = React.useState(0);
+export default function InfiniteCarousel() {
+  const baseVelocity = -0.7; // Reduced from -2 to -0.5 for slower movement
+  const baseX = useMotionValue(0);
+  const smoothVelocity = useSpring(baseVelocity, {
+    damping: 50,
+    stiffness: 400,
+  });
+  useTransform(smoothVelocity, [0, 1000], [0, 5], {
+    clamp: false,
+  });
+  const x = useTransform(
+    baseX,
+    (v) => `${wrap(-50, -50 + 100 / images.length, v)}%`
+  );
 
-  React.useEffect(() => {
-    if (carouselRef.current) {
-      setCarouselWidth(carouselRef.current.scrollWidth);
-    }
-    setLoopImages([...images, ...images]); // Duplicate images for seamless loop
-  }, []);
-
-  useAnimationFrame(() => {
-    const wrappedScroll = wrap(0, -carouselWidth / 2, scrollX);
-    setScrollX(wrappedScroll - 0.5); // Adjust speed here
+  const directionFactor = useRef<number>(1);
+  useAnimationFrame((t, delta) => {
+    const moveBy = directionFactor.current * baseVelocity * (delta / 1000);
+    baseX.set(baseX.get() + moveBy);
   });
 
+  function wrap(min: number, max: number, v: number) {
+    const rangeSize = max - min;
+    return ((((v - min) % rangeSize) + rangeSize) % rangeSize) + min;
+  }
+
   return (
-    <div className="relative max-w-[1700px] mx-auto px-6 overflow-hidden">
-      <motion.div ref={carouselRef} className="flex" style={{ x: scrollX }}>
-        {loopImages.map((src, index) => (
-          <div
-            key={index}
-            className={cn("relative flex-[0_0_auto] min-w-0 pl-6", {
-              "mr-4": index === loopImages.length - 1,
-            })}
-          >
-            <div
-              className={cn("relative", {
-                "h-[400px]": index % 4 === 0 || index % 4 === 2,
-                "h-[300px]": index % 4 === 1,
-                "h-[350px]": index % 4 === 3,
-              })}
+    <div className="w-full overflow-hidden bg-transparent">
+      <div className="relative py-8">
+        <motion.div className="flex gap-4 w-max" style={{ x }}>
+          {[...images, ...images].map((src, index) => (
+            <motion.div
+              key={index}
+              className="relative w-[280px] sm:w-[320px] md:w-[350px] h-[350px] md:h-[400px] aspect-[4/3] rounded-3xl overflow-hidden flex-shrink-0"
+              style={{
+                boxShadow: "0 0 10px rgba(0,0,0,0.1)",
+              }}
             >
-              <img
+              <Image
                 src={src}
-                alt={`Carousel image ${(index % 4) + 1}`}
-                className="w-[300px] h-full object-cover rounded-3xl"
+                alt={`Business scene ${index + 1}`}
+                fill
+                className="object-cover"
               />
-              {/* {index < loopImages.length - 1 && (
-                <svg
-                  className="absolute top-1/2 -right-8 transform -translate-y-1/2 z-10"
-                  width="64"
-                  height="100"
-                  viewBox="0 0 64 100"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M5 0 Q 32 50 5 100"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeDasharray="4 4"
-                    className="text-gray-300"
-                  />
-                </svg>
-              )} */}
-            </div>
-          </div>
-        ))}
-      </motion.div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
     </div>
   );
 }

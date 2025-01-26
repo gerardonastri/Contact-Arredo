@@ -7,7 +7,7 @@ import AboutForm from "./_components/about-form";
 const About = () => {
   return (
     <main className="pt-[20px] md:pt-[80px]">
-      <div className="px-[3rem] max-w-[1700px] mx-auto">
+      <div className="px-[1.5rem] sm:px-[3rem] max-w-[1700px] mx-auto">
         <h2 className="text-3xl md:text-6xl font-glimerBold">
           Contact arredo,{" "}
           <span className="text-[#213D75]">
@@ -31,7 +31,7 @@ const About = () => {
       <div className="relative lg:px-[3rem] max-w-[1700px] mx-auto mt-12 lg:mt-[250px] z-[2]">
         <Culture />
       </div>
-      <div className="mt-[100px] md:mt-[200px] px-[3rem] max-w-[1700px] mx-auto">
+      <div className="mt-[100px] md:mt-[200px] px-[1.5rem] sm:px-[3rem] max-w-[1700px] mx-auto">
         <Carousel />
       </div>
       <div className="mt-[100px]">
