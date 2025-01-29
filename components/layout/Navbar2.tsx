@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import TransitionLink from "../TransitionLink";
 import Form from "next/form";
+import Image from "next/image";
 
 export default function Navbar2() {
   const [isOpen, setIsOpen] = useState(false);
@@ -39,7 +40,7 @@ export default function Navbar2() {
         isScrolled ? "bg-white/80 backdrop-blur-md shadow-sm" : "bg-transparent"
       )}
     >
-      <nav className="max-w-[1700px] mx-auto px-4 lg:px-[3rem] h-16 flex items-center justify-between">
+      <nav className="max-w-[1700px] mx-auto px-4 lg:px-[3rem] h-[100px] flex items-center justify-between">
         {/* Mobile Menu Trigger */}
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetTrigger asChild>
@@ -149,7 +150,13 @@ export default function Navbar2() {
           href="/"
           className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
         >
-          <h1 className="text-2xl font-glimerBold">Contact Arredo</h1>
+          <Image
+            src="/logo-blue.png"
+            width={150}
+            height={60}
+            className=""
+            alt="logo"
+          />
         </TransitionLink>
 
         {/* Desktop Search Form */}

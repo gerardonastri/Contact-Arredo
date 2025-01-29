@@ -22,7 +22,7 @@ const slides: Slide[] = [
   },
   {
     id: 3,
-    title: "Dai vita al tuo spazio con le nostre soluzionis",
+    title: "Dai vita al tuo spazio con le nostre solutions",
     description: "Tradizione e innovazione si incontrano",
     image: "/hero/hero-3.webp",
   },
@@ -36,7 +36,7 @@ const page = () => {
       <AnimatedStats />
       <div className="flex flex-col md:flex-row gap-5 md:gap-0 justify-between w-full px-4 md:px-[3rem] lg:max-w-[1700px] mx-auto mt-[30px] md:mt-[120px]">
         <h2 className="font-glimerBold text-[#B8B4AC] text-3xl md:text-5xl">
-        Scopri tutti i <br /> nostri marchi
+          Scopri tutti i <br /> nostri marchi
         </h2>
         <div>
           <Button className="bg-[#213D75]">
