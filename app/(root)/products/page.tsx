@@ -92,23 +92,28 @@ export default function Page() {
               const Icon = category.icon;
               return (
                 <Button
-                key={category.id}
-                variant={activeCategory === category.name ? "default" : "outline"}
-                onClick={() => setActiveCategory(category.name)}
-                className="relative group px-4 py-2"
-              >
-                <motion.div
-                  initial={false}
-                  animate={{
-                    backgroundColor: activeCategory === category.name ? "#213D75" : "transparent",
-                  }}
-                  className="absolute inset-0 rounded-md opacity-100"
-                />
-                <div className="relative z-10 flex items-center">
-                  <Icon className="w-4 h-4 mr-2" />
-                  <span>{category.name}</span>
-                </div>
-              </Button>
+                  key={category.id}
+                  variant={
+                    activeCategory === category.name ? "default" : "outline"
+                  }
+                  onClick={() => setActiveCategory(category.name)}
+                  className="relative group px-4 py-2"
+                >
+                  <motion.div
+                    initial={false}
+                    animate={{
+                      backgroundColor:
+                        activeCategory === category.name
+                          ? "#213D75"
+                          : "transparent",
+                    }}
+                    className="absolute inset-0 rounded-md opacity-100"
+                  />
+                  <div className="relative z-10 flex items-center">
+                    <Icon className="w-4 h-4 mr-2" />
+                    <span>{category.name}</span>
+                  </div>
+                </Button>
               );
             })}
           </div>
@@ -118,7 +123,7 @@ export default function Page() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6"
+          className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6"
         >
           {filteredProducts.map((product, index) => (
             <motion.div
@@ -137,33 +142,13 @@ export default function Page() {
                     rel="noopener noreferrer"
                     className="block"
                   >
-                    {/* Logo Section */}
-                    <div className="relative p-8">
-                      {/* Animated background gradient */}
+                    {/* Updated Logo Section */}
+                    <div className="relative p-4 sm:p-6 md:p-8">
                       <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-white opacity-80 group-hover:opacity-100 transition-opacity duration-500" />
 
-                      {/* Animated circles background */}
-                      <div className="absolute inset-0 overflow-hidden">
-                        <motion.div
-                          className="absolute -inset-[100%] opacity-0 group-hover:opacity-20"
-                          initial={false}
-                          animate={{
-                            background: [
-                              "radial-gradient(circle at 0% 0%, #f1f5f9 0%, transparent 50%)",
-                              "radial-gradient(circle at 100% 100%, #f1f5f9 0%, transparent 50%)",
-                            ],
-                          }}
-                          transition={{
-                            duration: 2,
-                            repeat: Infinity,
-                            repeatType: "reverse",
-                          }}
-                        />
-                      </div>
-
-                      {/* Logo container */}
+                      {/* Updated logo container with better mobile sizing */}
                       <motion.div
-                        className="relative aspect-[3/2] w-full"
+                        className="relative w-full h-24 sm:h-32 md:h-40"
                         whileHover={{ scale: 1.05 }}
                         transition={{
                           type: "spring",
@@ -171,35 +156,36 @@ export default function Page() {
                           damping: 20,
                         }}
                       >
-                        <div className="absolute inset-0 flex items-center justify-center p-6">
+                        <div className="absolute inset-0 flex items-center justify-center">
                           <Image
-                            src={product.image}
+                            src={product.image || "/placeholder.svg"}
                             alt={`${product.title} logo`}
                             fill
-                            className={`object-contain transition-opacity duration-300 ${"opacity-100"}`}
+                            className="object-contain p-2 sm:p-4"
+                            sizes="(max-width: 640px) 150px, (max-width: 768px) 200px, 250px"
+                            priority={index < 4}
                           />
                         </div>
                       </motion.div>
                     </div>
 
                     {/* Content Section */}
-                    <div className="relative px-6 pb-6 pt-2">
-                      {/* Decorative top border */}
+                    <div className="relative px-4 sm:px-6 pb-4 sm:pb-6 pt-2">
                       <div className="absolute top-0 left-4 right-4 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
 
                       <motion.div
                         initial={{ opacity: 0.8 }}
                         whileHover={{ opacity: 1 }}
-                        className="text-center space-y-3"
+                        className="text-center space-y-2 sm:space-y-3"
                       >
-                        <h3 className="text-xl font-medium text-gray-900 group-hover:text-[#213D75] transition-colors">
+                        <h3 className="text-base sm:text-lg md:text-xl font-medium text-gray-900 group-hover:text-[#213D75] transition-colors">
                           {product.title}
                         </h3>
-                        <p className="text-sm text-[#808285] font-light">
+                        <p className="text-xs sm:text-sm text-[#808285] font-light">
                           {product.category}
                         </p>
                         <motion.div
-                          className="flex justify-center items-center gap-2 text-sm text-gray-600 group-hover:text-[#213D75] transition-colors"
+                          className="flex justify-center items-center gap-2 text-xs sm:text-sm text-gray-600 group-hover:text-[#213D75] transition-colors"
                           whileHover={{ x: 5 }}
                           transition={{
                             type: "spring",
@@ -208,7 +194,7 @@ export default function Page() {
                           }}
                         >
                           <span className="font-medium">Visita il sito</span>
-                          <ExternalLink className="w-4 h-4 transition-transform group-hover:scale-110" />
+                          <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 transition-transform group-hover:scale-110" />
                         </motion.div>
                       </motion.div>
                     </div>
