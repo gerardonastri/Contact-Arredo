@@ -35,8 +35,8 @@ function Counter({ value, duration = 2 }: CounterProps) {
 export default function AnimatedStats() {
   const stats = [
     { value: 30, label: "Aziende Partner", suffix: "" },
-    { value: 20, label: "Progetti", suffix: "+" },
-    { value: 50, label: "Clienti Soddisfatti", suffix: "+" },
+    { value: 100, label: "Progetti", suffix: "+" },
+    { value: 200, label: "Clienti Soddisfatti", suffix: "+" },
     { value: "25", label: "Anni di esperienza", suffix: "+" },
   ];
 

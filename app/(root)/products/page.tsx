@@ -123,7 +123,7 @@ export default function Page() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6"
+          className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 md:gap-6"
         >
           {filteredProducts.map((product, index) => (
             <motion.div
@@ -148,7 +148,7 @@ export default function Page() {
 
                       {/* Updated logo container with better mobile sizing */}
                       <motion.div
-                        className="relative w-full h-24 sm:h-32 md:h-40"
+                        className="relative w-full h-[130px] sm:h-32 md:h-40"
                         whileHover={{ scale: 1.05 }}
                         transition={{
                           type: "spring",
@@ -161,7 +161,7 @@ export default function Page() {
                             src={product.image || "/placeholder.svg"}
                             alt={`${product.title} logo`}
                             fill
-                            className="object-contain p-2 sm:p-4"
+                            className="object-contain p-4 sm:p-6 md:p-8"
                             sizes="(max-width: 640px) 150px, (max-width: 768px) 200px, 250px"
                             priority={index < 4}
                           />

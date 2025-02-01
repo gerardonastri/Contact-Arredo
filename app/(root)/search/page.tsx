@@ -223,7 +223,7 @@ function ResultCard({
 
                 {/* Logo container */}
                 <motion.div
-                  className="relative w-full h-24 sm:h-32 md:h-40"
+                  className="relative w-full h-[130px] sm:h-32 md:h-40"
                   whileHover={{ scale: 1.05 }}
                   transition={{
                     type: "spring",

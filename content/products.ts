@@ -3,7 +3,7 @@ export const products = [
     title: "Novabell",
     category: "Pavimenti e Rivestimenti",
     url: "https://www.novabell.it",
-    image: "/loghi/logo-1.jpg",
+    image: "/loghi/logo-1.png",
   },
   {
     title: "Dado",
@@ -177,6 +177,6 @@ export const products = [
     title: "Relax",
     category: "Box doccia",
     url: "https://relaxsrl.com/",
-    image: "/loghi/logo-28.jpg",
+    image: "/loghi/logo-28.png",
   },
 ];
