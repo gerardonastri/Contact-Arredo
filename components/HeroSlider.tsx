@@ -3,22 +3,29 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { type HeroSliderProps } from "../types/slider";
 
-const AnimatedHeroSlider = ({ slides, autoPlayInterval = 8000 }: HeroSliderProps) => {
+interface HeroSliderProps {
+  slides: { image: string; title: string }[];
+  autoPlayInterval?: number;
+}
+
+const AnimatedHeroSlider = ({
+  slides,
+  autoPlayInterval = 8000,
+}: HeroSliderProps) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
 
   const containerVariants = {
     hidden: { opacity: 0, y: 50 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
-      transition: { 
-        duration: 0.8, 
-        ease: "easeOut" 
-      } 
-    }
+      transition: {
+        duration: 0.8,
+        ease: "easeOut",
+      },
+    },
   };
 
   return (
@@ -33,13 +40,10 @@ const AnimatedHeroSlider = ({ slides, autoPlayInterval = 8000 }: HeroSliderProps
   );
 };
 
-
-function HeroSlider({
-  slides,
-  autoPlayInterval = 8000,
-}: HeroSliderProps) {
+function HeroSlider({ slides, autoPlayInterval = 8000 }: HeroSliderProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -49,6 +53,12 @@ function HeroSlider({
 
     return () => clearInterval(timer);
   }, [slides.length, autoPlayInterval]);
+
+  useEffect(() => {
+    if (currentIndex === 0 && videoRef.current) {
+      videoRef.current.play();
+    }
+  }, [currentIndex]);
 
   const slideVariants = {
     enter: (direction: number) => ({
@@ -96,12 +106,27 @@ function HeroSlider({
             }}
             className="absolute inset-0"
           >
-            <div
-              className="absolute inset-0 bg-cover bg-center lg:rounded-[25px]"
-              style={{ backgroundImage: `url(${slides[currentIndex].image})` }}
-            >
-              <div className="absolute inset-0 bg-black/40" />
-            </div>
+            {currentIndex === 0 ? (
+              <video
+                ref={videoRef}
+                className="absolute inset-0 w-full h-full object-cover lg:rounded-[25px]"
+                src="/video.mp4"
+                loop
+                muted
+                playsInline
+              >
+                <source src="/path-to-your-video.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            ) : (
+              <div
+                className="absolute inset-0 bg-cover bg-center lg:rounded-[25px]"
+                style={{
+                  backgroundImage: `url(${slides[currentIndex].image})`,
+                }}
+              />
+            )}
+            <div className="absolute inset-0 bg-black/40" />
             <div className="relative h-full flex items-center justify-center text-center px-4 sm:px-6 lg:px-8">
               <div className="max-w-4xl">
                 <motion.h1
@@ -112,14 +137,6 @@ function HeroSlider({
                 >
                   {slides[currentIndex].title}
                 </motion.h1>
-                {/* <motion.p
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.5, duration: 0.8 }}
-                  className="max-w-[80%] md:max-w-[100%] mx-auto text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-white/90"
-                >
-                  {slides[currentIndex].description}
-                </motion.p> */}
               </div>
             </div>
           </motion.div>
@@ -160,4 +177,4 @@ function HeroSlider({
   );
 }
 
-export default AnimatedHeroSlider
+export default AnimatedHeroSlider;
