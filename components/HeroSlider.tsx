@@ -1,20 +1,30 @@
-"use client";
+"use client"
 
-import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence, useInView } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useState, useEffect, useRef } from "react"
+import { motion, AnimatePresence, useInView } from "framer-motion"
+import { ChevronLeft, ChevronRight } from "lucide-react"
+import Image from "next/image"
 
 interface HeroSliderProps {
-  slides: { image: string; title: string }[];
-  autoPlayInterval?: number;
+  slides: { image: string; title: string }[]
+  autoPlayInterval?: number
+  videoProps?: {
+    src: string
+    poster?: string
+    webmSrc?: string
+  }
 }
 
-const AnimatedHeroSlider = ({
-  slides,
-  autoPlayInterval = 8000,
-}: HeroSliderProps) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
+// E poi nel componente, usa un valore di default
+const defaultVideoProps = {
+  src: "/video.mp4",
+  poster: "/video-poster.jpg",
+  webmSrc: undefined,
+}
+
+const AnimatedHeroSlider = ({ slides, autoPlayInterval = 8000, videoProps }: HeroSliderProps) => {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true })
 
   const containerVariants = {
     hidden: { opacity: 0, y: 50 },
@@ -26,39 +36,74 @@ const AnimatedHeroSlider = ({
         ease: "easeOut",
       },
     },
-  };
+  }
 
   return (
-    <motion.div
-      ref={ref}
-      initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
-      variants={containerVariants}
-    >
-      <HeroSlider slides={slides} autoPlayInterval={autoPlayInterval} />
+    <motion.div ref={ref} initial="hidden" animate={isInView ? "visible" : "hidden"} variants={containerVariants}>
+      <HeroSlider slides={slides} autoPlayInterval={autoPlayInterval} videoProps={videoProps} />
     </motion.div>
-  );
-};
+  )
+}
 
-function HeroSlider({ slides, autoPlayInterval = 8000 }: HeroSliderProps) {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [direction, setDirection] = useState(0);
-  const videoRef = useRef<HTMLVideoElement>(null);
+function HeroSlider({ slides, autoPlayInterval = 8000, videoProps = defaultVideoProps }: HeroSliderProps) {
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [direction, setDirection] = useState(0)
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false)
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null)
+  const isInView = useInView(containerRef, { once: false })
 
+  // Gestione intelligente del preload del video
+  useEffect(() => {
+    if (!videoRef.current) return
+
+    const video = videoRef.current
+
+    // Preload metadata per ottenere dimensioni e durata
+    video.preload = "metadata"
+
+    // Gestione del caricamento
+    const handleCanPlay = () => {
+      setIsVideoLoaded(true)
+    }
+
+    video.addEventListener("canplay", handleCanPlay)
+
+    return () => {
+      video.removeEventListener("canplay", handleCanPlay)
+    }
+  }, [])
+
+  // Gestione ottimizzata dell'autoplay
+  useEffect(() => {
+    if (!videoRef.current || !isInView) return
+
+    const video = videoRef.current
+
+    if (currentIndex === 0) {
+      // Riproduci solo se il video è visibile e siamo sulla prima slide
+      const playPromise = video.play()
+
+      if (playPromise !== undefined) {
+        playPromise.catch((error) => {
+          console.log("Autoplay prevented:", error)
+        })
+      }
+    } else {
+      // Pausa il video se non è la prima slide
+      video.pause()
+    }
+  }, [currentIndex, isInView])
+
+  // Gestione del timer per le slide
   useEffect(() => {
     const timer = setInterval(() => {
-      setDirection(1);
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
-    }, autoPlayInterval);
+      setDirection(1)
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length)
+    }, autoPlayInterval)
 
-    return () => clearInterval(timer);
-  }, [slides.length, autoPlayInterval]);
-
-  useEffect(() => {
-    if (currentIndex === 0 && videoRef.current) {
-      videoRef.current.play();
-    }
-  }, [currentIndex]);
+    return () => clearInterval(timer)
+  }, [slides.length, autoPlayInterval])
 
   const slideVariants = {
     enter: (direction: number) => ({
@@ -75,23 +120,21 @@ function HeroSlider({ slides, autoPlayInterval = 8000 }: HeroSliderProps) {
       x: direction < 0 ? "100%" : "-100%",
       opacity: 0,
     }),
-  };
+  }
 
   const handleNext = () => {
-    setDirection(1);
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
-  };
+    setDirection(1)
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length)
+  }
 
   const handlePrevious = () => {
-    setDirection(-1);
-    setCurrentIndex(
-      (prevIndex) => (prevIndex - 1 + slides.length) % slides.length
-    );
-  };
+    setDirection(-1)
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + slides.length) % slides.length)
+  }
 
   return (
     <div className="max-w-[1700px] mx-auto h-[80vh] lg:px-[3rem] lg:rounded-[25px] relative">
-      <div className="relative w-full overflow-hidden h-[80vh] lg:rounded-[25px]">
+      <div ref={containerRef} className="relative w-full overflow-hidden h-[80vh] lg:rounded-[25px]">
         <AnimatePresence initial={false} custom={direction}>
           <motion.div
             key={currentIndex}
@@ -104,27 +147,50 @@ function HeroSlider({ slides, autoPlayInterval = 8000 }: HeroSliderProps) {
               x: { type: "spring", stiffness: 100, damping: 20 },
               opacity: { duration: 0.5 },
             }}
-            className="absolute inset-0"
+            className="absolute inset-0 w-full h-full"
           >
             {currentIndex === 0 ? (
-              <video
-                ref={videoRef}
-                className="absolute inset-0 w-full h-full object-cover lg:rounded-[25px]"
-                src="/video.mp4"
-                loop
-                muted
-                playsInline
-              >
-                <source src="/path-to-your-video.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
+              <>
+                {/* Poster/placeholder mentre il video carica */}
+                {!isVideoLoaded && videoProps.poster && (
+                  <Image
+                    src={videoProps.poster || "/placeholder.svg"}
+                    alt="Video thumbnail"
+                    fill
+                    priority
+                    className="object-cover lg:rounded-[25px]"
+                  />
+                )}
+                <video
+                  ref={videoRef}
+                  className={`absolute inset-0 w-full h-full object-cover lg:rounded-[25px] ${
+                    isVideoLoaded ? "opacity-100" : "opacity-0"
+                  }`}
+                  playsInline
+                  muted
+                  loop
+                  poster={videoProps.poster}
+                  onLoadedData={() => setIsVideoLoaded(true)}
+                >
+                  {/* WebM come fonte primaria se disponibile */}
+                  {videoProps.webmSrc && <source src={videoProps.webmSrc} type="video/webm" />}
+                  {/* MP4 come fallback */}
+                  <source src={videoProps.src} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </>
             ) : (
-              <div
-                className="absolute inset-0 bg-cover bg-center lg:rounded-[25px]"
-                style={{
-                  backgroundImage: `url(${slides[currentIndex].image})`,
-                }}
-              />
+              <div className="absolute inset-0 w-full h-full">
+                <Image
+                  src={slides[currentIndex].image || "/placeholder.svg"}
+                  alt={slides[currentIndex].title}
+                  fill
+                  className="object-cover lg:rounded-[25px]"
+                  priority={currentIndex === 1}
+                  sizes="(max-width: 1700px) 100vw, 1700px"
+                  quality={90}
+                />
+              </div>
             )}
             <div className="absolute inset-0 bg-black/40" />
             <div className="relative h-full flex items-center justify-center text-center px-4 sm:px-6 lg:px-8">
@@ -162,8 +228,8 @@ function HeroSlider({ slides, autoPlayInterval = 8000 }: HeroSliderProps) {
             <button
               key={index}
               onClick={() => {
-                setDirection(index > currentIndex ? 1 : -1);
-                setCurrentIndex(index);
+                setDirection(index > currentIndex ? 1 : -1)
+                setCurrentIndex(index)
               }}
               className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full transition-colors ${
                 index === currentIndex ? "bg-white" : "bg-white/50"
@@ -174,7 +240,8 @@ function HeroSlider({ slides, autoPlayInterval = 8000 }: HeroSliderProps) {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default AnimatedHeroSlider;
+export default AnimatedHeroSlider
+
