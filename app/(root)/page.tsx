@@ -18,13 +18,13 @@ const slides: Slide[] = [
     id: 2,
     title: "Tutto viene selezionato da noi per voi",
     description: "Arredi esclusivi per spazi straordinari",
-    image: "/hero/hero-2.webp",
+    image: "/hero/img-1.webp",
   },
   {
     id: 3,
     title: "Dai vita al tuo spazio con le nostre soluzioni",
     description: "Tradizione e innovazione si incontrano",
-    image: "/hero/hero-3.webp",
+    image: "/hero/img-3.webp",
   },
 ];
 
