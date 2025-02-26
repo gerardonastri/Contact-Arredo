@@ -51,7 +51,6 @@ function HeroSlider({ slides, autoPlayInterval = 8000, videoProps = defaultVideo
   const [isVideoLoaded, setIsVideoLoaded] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
-  const isInView = useInView(containerRef, { once: false })
 
   // Gestione intelligente del preload del video
   useEffect(() => {
@@ -59,12 +58,18 @@ function HeroSlider({ slides, autoPlayInterval = 8000, videoProps = defaultVideo
 
     const video = videoRef.current
 
-    // Preload metadata per ottenere dimensioni e durata
-    video.preload = "metadata"
+    // Set to auto to start loading immediately
+    video.preload = "auto"
 
-    // Gestione del caricamento
+    // Start loading the video immediately
+    video.load()
+
     const handleCanPlay = () => {
       setIsVideoLoaded(true)
+      // Try to play as soon as possible
+      video.play().catch((error) => {
+        console.log("Autoplay prevented:", error)
+      })
     }
 
     video.addEventListener("canplay", handleCanPlay)
@@ -76,24 +81,21 @@ function HeroSlider({ slides, autoPlayInterval = 8000, videoProps = defaultVideo
 
   // Gestione ottimizzata dell'autoplay
   useEffect(() => {
-    if (!videoRef.current || !isInView) return
+    if (!videoRef.current) return
 
     const video = videoRef.current
 
     if (currentIndex === 0) {
-      // Riproduci solo se il video è visibile e siamo sulla prima slide
       const playPromise = video.play()
-
       if (playPromise !== undefined) {
         playPromise.catch((error) => {
           console.log("Autoplay prevented:", error)
         })
       }
     } else {
-      // Pausa il video se non è la prima slide
       video.pause()
     }
-  }, [currentIndex, isInView])
+  }, [currentIndex])
 
   // Gestione del timer per le slide
   useEffect(() => {
@@ -169,6 +171,8 @@ function HeroSlider({ slides, autoPlayInterval = 8000, videoProps = defaultVideo
                   playsInline
                   muted
                   loop
+                  autoPlay // Add this
+                  preload="auto" // Add this
                   poster={videoProps.poster}
                   onLoadedData={() => setIsVideoLoaded(true)}
                 >

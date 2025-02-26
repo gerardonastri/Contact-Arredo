@@ -18,9 +18,9 @@ export default function Footer() {
             Un bagno ben progettato è il cuore pulsante di una casa, un luogo di rifugio e di rigenerazione che riflette il comfort e lo stile della vita domestica. Noi di Contact ti aiuteremo, passo dopo passo, nella progettazione del tuo principale luogo di comfort
             </p>
           </div>
-          <div className="relative h-[120px] lg:h-[240px] rounded-2xl overflow-hidden">
+          <div className="relative h-[180px] lg:h-[240px] rounded-2xl overflow-hidden">
             <Image
-              src="/hero/img-4.webp"
+              src="/hero/hero-3.webp"
               alt="Modern interior design"
               fill
               className="object-cover"

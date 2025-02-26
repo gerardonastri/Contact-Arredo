@@ -74,7 +74,7 @@ export default function FurnitureGallery() {
       variants={containerVariants}
       className="w-full max-w-[1700px] lg:px-[3rem] mt-[100px] mx-auto p-4"
     >
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 h-[70vh]">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 h-[85vh] md:h-[70vh]">
         {/* Main Feature */}
         <motion.div
           variants={itemVariants}

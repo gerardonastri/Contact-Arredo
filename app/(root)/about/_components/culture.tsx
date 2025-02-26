@@ -109,7 +109,7 @@ export default function Culture() {
           >
             <div className="relative aspect-square rounded-2xl overflow-hidden">
               <Image
-                src="/images/team.jpeg"
+                src="/about-1.webp"
                 alt="Team collaboration"
                 fill
                 className="object-cover"
