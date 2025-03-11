@@ -11,18 +11,14 @@ import {
 } from "framer-motion";
 
 const images = [
-  "/categories/cat-1.png",
-  "/categories/cat-2.jpg",
-  "/categories/cat-3.jpg",
-  "/categories/cat-4.jpg",
-  "/categories/cat-5.jpg",
-  "/categories/cat-6.jpg",
-  "/categories/cat-1.png",
-  "/categories/cat-2.jpg",
-  "/categories/cat-3.jpg",
-  "/categories/cat-4.jpg",
-  "/categories/cat-5.jpg",
-  "/categories/cat-6.jpg",
+  "/slider/img-1.webp",
+  "/slider/img-2.webp",
+  "/slider/img-3.webp",
+  "/slider/img-4.webp",
+  "/slider/img-5.webp",
+  "/slider/img-6.webp",
+  "/slider/img-7.webp",
+  "/slider/img-8.webp",
 ];
 
 export default function InfiniteCarousel() {

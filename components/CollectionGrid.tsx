@@ -68,28 +68,28 @@ const CollectionGrid = () => {
   }, [controls, inView]);
   const items = [
     {
-      img: "/categories/cat-1.png",
+      img: "/categories/pavimenti.webp",
       title: "Pavimenti e Rivestimenti",
     },
     {
-      img: "/categories/cat-2.jpg",
+      img: "/categories/parquet.webp",
       title: "Parquet",
     },
     {
-      img: "/categories/cat-3.jpg",
+      img: "/categories/sanitari.webp",
       title: "Sanitari",
     },
     {
-      img: "/categories/cat-5.jpg",
+      img: "/categories/rubinetteria.webp",
       title: "Rubinetteria",
     },
     {
-      img: "/categories/cat-4.jpg",
+      img: "/categories/bagno.webp",
       title: "Arredo bagno",
     },
 
     {
-      img: "/categories/cat-6.jpg",
+      img: "/categories/doccia.webp",
       title: "Box doccia",
     },
   ];

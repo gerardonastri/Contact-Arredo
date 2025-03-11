@@ -106,7 +106,7 @@ export default function AboutForm() {
     <section className="relative w-full lg:max-w-[1700px] h-[120vh] md:h-[90vh] lg:px-[3rem] mx-auto lg:lg:rounded-3xl ">
       <div className="relative w-full h-full lg:rounded-3xl inset-0">
         <Image
-          src="/images/form-bg.jpg"
+          src="/hero/img-5.webp"
           alt="Modern luxury home interior"
           fill
           className="object-cover lg:rounded-3xl "
