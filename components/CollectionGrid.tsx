@@ -72,7 +72,7 @@ const CollectionGrid = () => {
       title: "Pavimenti e Rivestimenti",
     },
     {
-      img: "/categories/parquet.webp",
+      img: "/categories/Parquet.webp",
       title: "Parquet",
     },
     {
