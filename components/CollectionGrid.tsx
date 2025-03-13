@@ -5,7 +5,7 @@ import { motion, useAnimation, useInView } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 // import { Masonry } from "react-plock";
-
+//ciai
 interface CardProps {
   item: {
     img: string;
