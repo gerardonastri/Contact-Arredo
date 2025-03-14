@@ -48,9 +48,9 @@ export const products = [
     image: "/loghi/logo-8.svg",
   },
   {
-    title: "Tecnolam",
+    title: "Technolam",
     category: "Pavimenti e Rivestimenti",
-    url: "https://www.tecnolam.it",
+    url: "https://technolam.it/",
     image: "/loghi/logo-9.png",
   },
   {
@@ -62,7 +62,7 @@ export const products = [
   {
     title: "Keradom",
     category: "Pavimenti e Rivestimenti",
-    url: "https://www.keradom.it",
+    url: "https://www.keradom.it/brands/mac3/",
     image: "/loghi/logo-11.png",
   },
   {
@@ -116,7 +116,7 @@ export const products = [
   {
     title: "Arcom",
     category: "Arredo bagno",
-    url: "https://www.arcom.it",
+    url: "https://www.arcombagno.com/",
     image: "/loghi/logo-20.webp",
   },
   {
@@ -178,5 +178,29 @@ export const products = [
     category: "Box doccia",
     url: "https://relaxsrl.com/",
     image: "/loghi/logo-28.png",
+  },
+  {
+    title: "IRSAP",
+    category: "Arredo bagno",
+    url: "https://www.irsap.com/it",
+    image: "/loghi/logo-29.svg",
+  },
+  {
+    title: "Caleido",
+    category: "Arredo bagno",
+    url: "https://www.caleido.it/",
+    image: "/loghi/logo-32.svg",
+  },
+  {
+    title: "Londonart",
+    category: "Pavimenti e Rivestimenti",
+    url: "https://www.londonart.it/it/home",
+    image: "/loghi/logo-30.png",
+  },
+  {
+    title: "Venus",
+    category: "Pavimenti e Rivestimenti",
+    url: "https://www.venusdesign.eu/",
+    image: "/loghi/logo-31.svg",
   },
 ];

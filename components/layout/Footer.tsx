@@ -92,11 +92,14 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="h-5 w-5" />
-                <span>contact.arredo@virgilio.it</span>
+                <span>info@contactarredo.it</span>
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="h-5 w-5" />
-                <span>+39 3881009344</span>
+                <span>
+                  +39 3881009344 <br />
+                  +081 3650706
+                </span>
               </li>
               <li className="flex items-start gap-2">
                 <Clock className="h-5 w-5 mt-1" />
