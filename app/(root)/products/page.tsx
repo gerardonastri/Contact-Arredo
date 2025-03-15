@@ -19,7 +19,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { products } from "@/content/products";
 // import { useSearchParams } from "next/navigation";
 
-export const categories = [
+const categories = [
   {
     id: "all",
     name: "All",
