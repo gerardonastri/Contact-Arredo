@@ -2,14 +2,24 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { ExternalLink, Grid, Layout, Box } from "lucide-react";
+import {
+  ExternalLink,
+  Layout,
+  SquareIcon as Squares,
+  Bath,
+  Sofa,
+  Droplets,
+  ShowerHeadIcon as Shower,
+  Palette,
+  Grid,
+} from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { products } from "@/content/products";
 // import { useSearchParams } from "next/navigation";
 
-const categories = [
+export const categories = [
   {
     id: "all",
     name: "All",
@@ -18,7 +28,7 @@ const categories = [
   {
     id: "pavimenti-e-rivestimenti",
     name: "Pavimenti e Rivestimenti",
-    icon: Grid,
+    icon: Squares,
   },
   {
     id: "parquet",
@@ -28,22 +38,27 @@ const categories = [
   {
     id: "sanitari",
     name: "Sanitari",
-    icon: Box,
+    icon: Bath,
   },
   {
     id: "arredo-bagno",
     name: "Arredo bagno",
-    icon: Box,
+    icon: Sofa,
   },
   {
     id: "rubinetteria",
     name: "Rubinetteria",
-    icon: Box,
+    icon: Droplets,
   },
   {
     id: "box-doccia",
     name: "Box doccia",
-    icon: Box,
+    icon: Shower,
+  },
+  {
+    id: "finiture-arredo",
+    name: "Finiture D'Arredo",
+    icon: Palette,
   },
 ];
 export default function Page() {

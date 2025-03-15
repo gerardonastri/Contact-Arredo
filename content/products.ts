@@ -193,13 +193,13 @@ export const products = [
   },
   {
     title: "Londonart",
-    category: "Pavimenti e Rivestimenti",
+    category: "Finiture D'Arredo",
     url: "https://www.londonart.it/it/home",
     image: "/loghi/logo-30.png",
   },
   {
     title: "Venus",
-    category: "Pavimenti e Rivestimenti",
+    category: "Finiture D'Arredo",
     url: "https://www.venusdesign.eu/",
     image: "/loghi/logo-31.svg",
   },

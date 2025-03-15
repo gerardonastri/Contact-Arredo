@@ -1,11 +1,10 @@
 "use client";
+
 import React, { useEffect, useRef } from "react";
-import Masonry from "react-masonry-css";
 import { motion, useAnimation, useInView } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
-// import { Masonry } from "react-plock";
-//ciai
+
 interface CardProps {
   item: {
     img: string;
@@ -35,9 +34,8 @@ const Card = ({ item }: CardProps) => {
     >
       <Link href={`/products?q=${item.title}`}>
         <img
-          src={item.img}
-          alt="grid col"
-          //   fill
+          src={item.img || "/placeholder.svg"}
+          alt={item.title}
           className="object-cover w-full h-auto"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/0 to-black/60" />
@@ -66,39 +64,44 @@ const CollectionGrid = () => {
       controls.start({ opacity: 1, y: 0 });
     }
   }, [controls, inView]);
-  const items = [
+
+  // Define items for each column explicitly
+  const leftColumnItems = [
     {
       img: "/categories/pavimenti.webp",
       title: "Pavimenti e Rivestimenti",
     },
     {
-      img: "/categories/Parquet.webp",
-      title: "Parquet",
-    },
-    {
       img: "/categories/sanitari.webp",
       title: "Sanitari",
+    },
+  ];
+
+  const middleColumnItems = [
+    {
+      img: "/categories/Parquet.webp",
+      title: "Parquet",
     },
     {
       img: "/categories/rubinetteria.webp",
       title: "Rubinetteria",
     },
+  ];
+
+  const rightColumnItems = [
+    {
+      img: "/categories/furniture.webp",
+      title: "Finiture D'Arredo",
+    },
     {
       img: "/categories/bagno.webp",
       title: "Arredo bagno",
     },
-
     {
       img: "/categories/doccia.webp",
       title: "Box doccia",
     },
   ];
-  const breakpointColumnsObj = {
-    default: 3, // Numero di colonne di default
-    1100: 3, // 3 colonne su schermi più piccoli
-    900: 2, // 2 colonne su schermi medi
-    600: 1, // 1 colonna su schermi piccoli
-  };
 
   return (
     <motion.div
@@ -108,15 +111,38 @@ const CollectionGrid = () => {
       transition={{ duration: 0.5 }}
       className="mt-[50px] lg:mt-[80px] max-w-[1700px] px-4 md:px-[3rem] mx-auto"
     >
-      <Masonry
-        breakpointCols={breakpointColumnsObj}
-        className="my-masonry-grid"
-        columnClassName="my-masonry-grid_column"
-      >
-        {items.map((item, index) => (
-          <Card item={item} key={index} />
-        ))}
-      </Masonry>
+      {/* Custom grid layout for desktop */}
+      <div className="hidden md:grid md:grid-cols-3 gap-4">
+        {/* Left column */}
+        <div className="flex flex-col gap-4">
+          {leftColumnItems.map((item, index) => (
+            <Card item={item} key={`left-${index}`} />
+          ))}
+        </div>
+
+        {/* Middle column */}
+        <div className="flex flex-col gap-4">
+          {middleColumnItems.map((item, index) => (
+            <Card item={item} key={`middle-${index}`} />
+          ))}
+        </div>
+
+        {/* Right column */}
+        <div className="flex flex-col gap-4">
+          {rightColumnItems.map((item, index) => (
+            <Card item={item} key={`right-${index}`} />
+          ))}
+        </div>
+      </div>
+
+      {/* Mobile layout - single column */}
+      <div className="md:hidden flex flex-col gap-4">
+        {[...leftColumnItems, ...middleColumnItems, ...rightColumnItems].map(
+          (item, index) => (
+            <Card item={item} key={`mobile-${index}`} />
+          )
+        )}
+      </div>
     </motion.div>
   );
 };
