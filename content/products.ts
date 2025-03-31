@@ -54,12 +54,6 @@ export const products = [
     image: "/loghi/logo-9.png",
   },
   {
-    title: "Mac3",
-    category: "Pavimenti e Rivestimenti",
-    url: "https://mac3.it/",
-    image: "/loghi/logo-10.png",
-  },
-  {
     title: "Keradom",
     category: "Pavimenti e Rivestimenti",
     url: "https://www.keradom.it/brands/mac3/",
