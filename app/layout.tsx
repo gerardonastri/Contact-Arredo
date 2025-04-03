@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import CookieBanner from "@/components/CookieBanner";
 import Head from "next/head";
+import { Analytics } from "@vercel/analytics/react"
 
 // Importazione dei font locali
 const myFont = localFont({
@@ -103,6 +104,7 @@ export default function RootLayout({
       >
         {children}
         <CookieBanner />
+        <Analytics />
       </body>
     </html>
   );

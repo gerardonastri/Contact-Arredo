@@ -88,17 +88,22 @@ export default function Footer() {
             <ul className="space-y-4">
               <li className="flex items-center gap-2">
                 <MapPin className="h-5 w-5" />
-                <span>Via Nazionale, 247 Nocera Superiore (SA)</span>
+                <a
+                  href="https://maps.app.goo.gl/N41Pvvcy9U6xbtCc8"
+                  target="_blank"
+                >
+                  Via Nazionale, 247 Nocera Superiore (SA)
+                </a>
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="h-5 w-5" />
-                <span>info@contactarredo.it</span>
+                <a href="mailto:info@contactarredo.it">info@contactarredo.it</a>
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="h-5 w-5" />
                 <span>
-                  +39 3881009344 <br />
-                  +081 3650706
+                  <a href="tel:+39 3881009344">+39 3881009344</a> <br />
+                  <a href="tel:+081 3650706">+081 3650706</a>
                 </span>
               </li>
               <li className="flex items-start gap-2">
