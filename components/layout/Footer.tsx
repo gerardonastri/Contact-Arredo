@@ -126,6 +126,7 @@ export default function Footer() {
                 <Link
                   href="https://www.instagram.com/contact.arredo/"
                   className="hover:text-[#E4EDFF] transition-colors"
+                  target="_blank"
                 >
                   Instagram
                 </Link>
@@ -134,6 +135,7 @@ export default function Footer() {
                 <Link
                   href="https://www.facebook.com/contactarredo/"
                   className="hover:text-[#E4EDFF] transition-colors"
+                  target="_blank"
                 >
                   Facebook
                 </Link>
