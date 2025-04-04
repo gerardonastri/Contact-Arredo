@@ -111,7 +111,7 @@ export const products = [
     title: "Arcom",
     category: "Arredo bagno",
     url: "https://www.arcombagno.com/",
-    image: "/loghi/logo-20.webp",
+    image: "/loghi/logo-20.png",
   },
   {
     title: "Falegnameria Adriatica",
