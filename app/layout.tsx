@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import CookieBanner from "@/components/CookieBanner";
+import Head from "next/head";
+import { Analytics } from "@vercel/analytics/react"
 
 // Importazione dei font locali
 const myFont = localFont({
@@ -60,13 +62,49 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  const schemaData = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Contact Arredo",
+    "url": "https://www.contactarredo.com/",
+    "logo": "https://www.contactarredo.com/logo.png",
+    "description": "Contact Arredo offre soluzioni di arredamento di alta qualità per la casa e l'ufficio.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Via Esempio, 123",
+      "addressLocality": "Milano",
+      "addressRegion": "MI",
+      "postalCode": "20100",
+      "addressCountry": "IT"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+39 012 3456789",
+      "contactType": "customer service",
+      "availableLanguage": ["Italian", "English"]
+    },
+    "sameAs": [
+      "https://www.facebook.com/contactarredo",
+      "https://www.instagram.com/contactarredo",
+      "https://www.linkedin.com/company/contactarredo"
+    ]
+  };
+
   return (
     <html lang="en">
+      <Head>
+        <title>Contact Arredo - Arredamento di Qualità</title>
+        
+        {/* Inserimento JSON-LD per Schema.org */}
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }} />
+      </Head>
       <body
         className={`${myFont.variable} ${gilmerRegular.variable} font-poppins antialiased`}
       >
         {children}
         <CookieBanner />
+        <Analytics />
       </body>
     </html>
   );

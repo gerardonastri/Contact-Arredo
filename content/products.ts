@@ -54,12 +54,6 @@ export const products = [
     image: "/loghi/logo-9.png",
   },
   {
-    title: "Mac3",
-    category: "Pavimenti e Rivestimenti",
-    url: "https://mac3.it/",
-    image: "/loghi/logo-10.png",
-  },
-  {
     title: "Keradom",
     category: "Pavimenti e Rivestimenti",
     url: "https://www.keradom.it/brands/mac3/",
@@ -117,7 +111,7 @@ export const products = [
     title: "Arcom",
     category: "Arredo bagno",
     url: "https://www.arcombagno.com/",
-    image: "/loghi/logo-20.webp",
+    image: "/loghi/logo-20.png",
   },
   {
     title: "Falegnameria Adriatica",

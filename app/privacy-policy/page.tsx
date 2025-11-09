@@ -14,11 +14,11 @@ const PrivacyPolicy = () => {
           This Privacy Policy explains how we collect, use, disclose, and
           safeguard your information when you visit our website,
           <a
-            href="https://contact-arredo.vercel.app"
+            href="https://contactarredo.com"
             className="text-blue-600 underline"
           >
             {" "}
-            contact-arredo.vercel.app
+            contactarredo.com
           </a>{" "}
           (the Website). Please read this policy carefully to understand our
           practices regarding your information and how we handle it.
@@ -273,7 +273,7 @@ const PrivacyPolicy = () => {
 
       <footer className="mt-6">
         <p className="text-sm">
-          <strong>Last Updated</strong>: 14/12/2024
+          <strong>Last Updated</strong>: 03/04/25
         </p>
       </footer>
     </div>
